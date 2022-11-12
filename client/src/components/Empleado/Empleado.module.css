@@ -1,0 +1,84 @@
+.all{
+    background-color: #fff;
+    background-color: rgb(238, 238, 238);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+}
+
+.top{
+    /* border: 1px solid black; */
+    text-align: center;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+
+.title {
+    color: #c86202;
+}
+
+.down {
+    width: 40%;
+    min-width: min-content;
+    max-width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(238, 238, 238);
+    background-color: #fff;
+    border-radius: 0.5vw;
+}
+
+.form{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: grid;
+    place-content: center;
+    gap: 12px;
+}
+
+.name{
+    font-size:x-large;
+    font-weight: 500;
+    display: grid;
+    place-content: center;
+    text-decoration: underline;
+}
+
+.legajo{
+    font-size: large;
+    font-weight: 450;
+}
+
+.label{
+    font-weight: 380;
+    font-size: small;
+    margin-bottom: -5px;
+}
+
+.inputTime{
+    border-radius: 0.5vh;
+}
+
+.errorInput{
+    border: 2px solid #c82002;
+    border-radius: 0.5vh;
+}
+
+.error{
+    color: #c82002;
+    font-size: 11px;
+    margin-top: -10px;
+}
+
+@media screen and (max-width: 900px) {
+    .down {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .down {
+        width: 90%;
+    }
+}

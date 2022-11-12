@@ -1,0 +1,67 @@
+.topT{
+    border: 1px solid black;
+    border-radius: 0.5vw;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 1vh;
+    padding-bottom: 0vh;
+    background-color: #c86202;
+    color: #fff;
+    font-size:medium;
+}
+
+.tableTop {
+    text-align: center;
+}
+
+.info{
+    margin-top: 3px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 1vh;
+    padding-bottom: auto;
+}
+
+.tableTop {
+    text-align: center;
+    display: grid;
+    place-content: center;
+}
+
+.tableDown {
+    text-align: center;
+    display: grid;
+    place-content: center;
+}
+
+.registrar{
+    color: white;
+    background-color: green;
+    border-radius: 0.5vh;
+    border: 0px;
+    position: relative;
+    /* margin-top: 1vh; */
+    /* margin-bottom: 1vh; */
+    padding: 0.6vh 1vh;
+}
+
+.registrarE{
+    color: white;
+    background-color: #c82002;
+    border-radius: 0.5vh;
+    border: 0px;
+    position: relative;
+    /* margin-top: 1vh; */
+    /* margin-bottom: 1vh; */
+    padding: 0.6vh 1vh;
+}
+
+
+@media screen and (max-width: 800px) {
+    .topT{
+        font-size:small;
+    }
+    .totalTable {
+        font-size:small;
+    }
+}
