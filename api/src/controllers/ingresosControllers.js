@@ -87,10 +87,48 @@ async function getIngresoById(id) {
 }
 
 
+async function deleteIngreso(id) {
+    try{
+        const ingresoDeleted = await Ingreso.findByPk(id);
+
+        if(!ingresoDeleted) return;
+
+        if(ingresoDeleted){
+            var employee = await Empleado.findByPk(ingresoDeleted.empleadoId);
+
+            let lastIngreso = await getAllIngresosByEmployee(employee.id);
+
+            let lastIngreso2 = lastIngreso[0].id
+
+            if(lastIngreso2 === parseInt(id)) await employee.update({estado: 'OUT'});
+
+            let egresoDeletedId = ingresoDeleted.idEgreso;
+
+            await Ingreso.destroy({
+                where:{
+                    id: id
+                }
+            });   
+
+            if(egresoDeletedId){
+                await Egreso.destroy({
+                    where:{
+                        id: egresoDeletedId
+                    }
+                });
+            }
+        }
+    } catch (error) {
+            console.log('Error in deleteIngreso', error);
+    }
+}
+
+
 module.exports = {
     postIngreso,
     putIngreso,
     getAllIngresos,
     getAllIngresosByEmployee,
-    getIngresoById
+    getIngresoById,
+    deleteIngreso
 }

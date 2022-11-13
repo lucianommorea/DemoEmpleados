@@ -23,11 +23,18 @@ function EmpleadoIngreso() {
   let dateNow = new Date();
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDeleted, setIsDeleted] = useState(true);
 
   useEffect(() => {
     dispatch(getEmployeeId(id, setLoading));
     dispatch(getIngresoByEmployee(id));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    dispatch(getEmployeeId(id));
+    dispatch(getIngresoByEmployee(id));
+    // eslint-disable-next-line
+  }, [isDeleted]);
 
   function validate(input) {
     let inputFecha = moment(input, "YYYY-MM-DD HH:mm:ss");
@@ -159,10 +166,12 @@ function EmpleadoIngreso() {
           employee.ingresos.length === 0 ?
           <div> No existen ingresos registrados </div> : 
           <IngresosEgresos  key={e.id}
+                            id={e.id}
                             ingreso1={e.date} 
                             egreso1={e.egreso ? e.egreso.date : null} 
                             horasTrans={e.horasMinTrabajadas}
-                            masOchoHoras={e.masOchoHoras}/> 
+                            masOchoHoras={e.masOchoHoras}
+                            setIsDeleted={setIsDeleted} /> 
 
           )
         }

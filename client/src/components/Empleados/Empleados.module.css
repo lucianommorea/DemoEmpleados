@@ -86,4 +86,9 @@
         text-align: center;
         font-weight: 450;
     }
+
+    .down {
+        width: 90%;
+    }
+
 }

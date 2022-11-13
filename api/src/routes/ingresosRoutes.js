@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postIngreso, putIngreso, getIngresoById, getAllIngresosByEmployee, getAllIngresos } = require('../controllers/ingresosControllers');
+const { postIngreso, putIngreso, getIngresoById, getAllIngresosByEmployee, getAllIngresos, deleteIngreso } = require('../controllers/ingresosControllers');
 const { Empleado, Ingreso, Egreso } = require('../db');
 
 
@@ -80,6 +80,24 @@ router.get('/', async (req,res) => {
         }
     } catch (error) {
         console.log('Error getIngresosRoute' + error);;
+    }
+})
+
+router.delete('/:id', async (req,res) => {
+    const {id} = req.params;
+    try {
+        const ingresoDeleted = await Ingreso.findByPk(id);
+        if(!id){
+            res.status(404).send({error: "No se recibieron los parámetros necesarios para eliminar Ingreso"});
+        }
+        else if(!ingresoDeleted) res.status(404).send({error: "No se recibieron los parámetros necesarios para eliminar Ingreso"});
+        else{
+            await deleteIngreso(id);
+            res.status(200).send({ success: true })
+        }
+
+    } catch (error) {
+        console.log('Error deleteIngreso' + error);
     }
 })
 

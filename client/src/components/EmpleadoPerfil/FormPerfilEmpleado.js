@@ -11,7 +11,7 @@ import EmpleadoModificacion from './EmpleadoModificacion';
 const moment = require('moment');
 
 
-function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta, fechaBaja}) {
+function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta, fechaBaja, edit, setEdit}) {
 
     const dispatch = useDispatch();
     const employee = useSelector(state => state.employee);
@@ -28,7 +28,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
         ciudad: ciudad,
         fechaAlta: fechaAlta,
     })
-    let [edit, setEdit] = useState(false)
+    // let [edit, setEdit] = useState(false)
 
     useEffect(()=> {
         setInput({
@@ -91,7 +91,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
         }))
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         if(!input.nombre || !input.apellido || !input.dni || !input.email || !input.fechaNacimiento || !input.telefono || !input.domicilio || !input.ciudad || !input.fechaAlta) setErrors(validate2({
             nombre: input.nombre,
@@ -112,7 +112,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
             )
             return
         }
-        dispatch(putEmployeeInfo(employee.id, input));
+        await dispatch(putEmployeeInfo(employee.id, input));
         setEdit(!edit)
         Swal.fire(
             ' EMPLEADO MODIFICADO CON EXITO ', `Se han modificado los datos de ${input.nombre} ${input.apellido}.`, 'success'

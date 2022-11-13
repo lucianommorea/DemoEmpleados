@@ -1,37 +1,42 @@
 .all{
     display: flex;
     flex-direction: row;
-    /* font-family: 'Open Sans', sans-serif; */
     border-radius: 0.5vw;
 }
-
-/* .tipo{
-    font-size: 1.2rem;
-    text-align: center;
-    width: 15%;
-    border: 1px solid black;
-} */
 
 .hora{
     font-size: 1.2rem;
     min-width: 1.2rem;
     text-align: center;
-    width: 33.5%;
+    width: 32%;
     margin-bottom: 5px;
 }
 
 .horasR{
     font-size: 1.2rem;
-    width: 33%;
+    width: 32%;
     text-align: center;
     color: #c82002;
 }
 
 .horasV{
     font-size: 1.2rem;
-    width: 33%;
+    width: 32%;
     text-align: center;
     color: green;
+}
+
+.delete{
+    width: 4%;
+    display: grid;
+    place-content: center;
+    margin-top: -6px;
+    margin-left: -5px;
+}
+
+.deleteIcon:hover{
+    cursor: pointer;
+    color: gray;
 }
 
 @media screen and (max-width: 900px) {

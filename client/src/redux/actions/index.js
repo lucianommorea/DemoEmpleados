@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { GET_ALL_EGRESOS, GET_ALL_EMPLOYEES, GET_ALL_INGRESOS, GET_EGRESOS_EMPLOYEE, GET_EGRESOS_ID, GET_EMPLOYEES_STATUS, GET_EMPLOYEE_ID, GET_EMPLOYEES_NAME, GET_INGRESOS_EMPLOYEE, GET_INGRESOS_ID, POST_EGRESO, POST_EMPLOYEE, POST_INGRESO, PUT_EGRESOS, PUT_EMPLOYEE_INFO, PUT_INGRESOS, GET_EMPLOYEE_ID_SEARCH, GET_ALL_ACTIVE_EMPLOYEES, GET_ACTIVE_EMPLOYEE_ID_SEARCH, GET_ACTIVE_EMPLOYEES_NAME, GET_ACTIVE_EMPLOYEES_STATUS, PUT_EMPLOYEE_ACTIVITY, CLEAN_EMPLOYEES, CLEAN_EMPLOYEE, CLEAN_INGRESOS } from "./actionTypes";
+import { GET_ALL_EGRESOS, GET_ALL_EMPLOYEES, GET_ALL_INGRESOS, GET_EGRESOS_EMPLOYEE, GET_EGRESOS_ID, GET_EMPLOYEES_STATUS, GET_EMPLOYEE_ID, GET_EMPLOYEES_NAME, GET_INGRESOS_EMPLOYEE, GET_INGRESOS_ID, POST_EGRESO, POST_EMPLOYEE, POST_INGRESO, PUT_EGRESOS, PUT_EMPLOYEE_INFO, PUT_INGRESOS, GET_EMPLOYEE_ID_SEARCH, GET_ALL_ACTIVE_EMPLOYEES, GET_ACTIVE_EMPLOYEE_ID_SEARCH, GET_ACTIVE_EMPLOYEES_NAME, GET_ACTIVE_EMPLOYEES_STATUS, PUT_EMPLOYEE_ACTIVITY, CLEAN_EMPLOYEES, CLEAN_EMPLOYEE, CLEAN_INGRESOS, GET_ALL_INACTIVE_EMPLOYEES, GET_INACTIVE_EMPLOYEE_ID_SEARCH, GET_INACTIVE_EMPLOYEES_NAME, DELETE_INGRESOS } from "./actionTypes";
 
 export const postEmployee = (employee) => async (dispatch) => {
     try {
@@ -110,6 +110,33 @@ export const getActiveEmployeeStatus = (status) => async (dispatch) => {
   }
 };
 
+export const getAllInactiveEmployees = () => async (dispatch) => {
+  try {
+    const { data } = await api.getAllInactiveEmployees();
+    dispatch({ type: GET_ALL_INACTIVE_EMPLOYEES, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getInactiveEmployeeIdSearch = (id) => async (dispatch) => {
+try {
+    const { data } = await api.getInactiveEmployeeIdSearch(id);
+    dispatch({ type: GET_INACTIVE_EMPLOYEE_ID_SEARCH, payload: data });
+  } catch (error) {
+  console.log(error.message);
+}
+};
+
+export const getInactiveEmployeesName = (search) => async (dispatch) => {
+  try {
+    const { data } = await api.getInactiveEmployeesName(search);
+    dispatch({ type: GET_INACTIVE_EMPLOYEES_NAME, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export const postIngreso = (ingreso) => async (dispatch) => {
     try {
       const { data } = await api.postIngreso(ingreso);
@@ -154,6 +181,15 @@ export const getIngresoByEmployee = (idEmpleado) => async (dispatch) => {
     } catch (error) {
       console.log(error.message);
     }
+};
+
+export const deleteIngreso = (id, setIsDeleted) => async (dispatch) => {
+  try {
+    await api.deleteIngreso(id);
+    setIsDeleted((prevIsDeleted) => !prevIsDeleted);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export const postEgreso = (egreso) => async (dispatch) => {

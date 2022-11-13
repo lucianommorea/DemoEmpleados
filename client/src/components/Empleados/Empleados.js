@@ -13,7 +13,7 @@ function Empleados() {
   let [input, setInput] = useState('');
   const dispatch = useDispatch();
   const [width, setWidth] = useState(window.innerWidth);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
  
   useEffect(() => {
     window.addEventListener("resize", handleResize, false);
@@ -47,7 +47,7 @@ function Empleados() {
         </div>
 
         <div className={style.search}>
-          <SearchBar input={input} setInput={setInput} />
+            <SearchBar input={input} setInput={setInput} /> 
         </div>
 
 

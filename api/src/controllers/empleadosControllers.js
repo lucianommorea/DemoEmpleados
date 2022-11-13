@@ -29,7 +29,8 @@ async function putEmployee(id, nombre, apellido, dni, email, fechaNacimiento, te
         const updatedEmployee = await Empleado.findOne({
           where: {
               id: id
-          }
+          },
+          include: [Ingreso, Egreso],
         });
 
         await updatedEmployee.update({nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta});
@@ -46,7 +47,8 @@ async function putEmployeeActivity(id, situacionLaboral, fechaBaja) {
         const updatedEmployee = await Empleado.findOne({
           where: {
               id: id
-          }
+          },
+          include: [Ingreso, Egreso],
         });
 
         await updatedEmployee.update({situacionLaboral, fechaBaja});
@@ -200,6 +202,55 @@ async function getActiveEmployeesByStatus(status) {
     }
 }
 
+async function getAllInactiveEmployees() {    
+    try{
+         let employees = await Empleado.findAll({
+            where: {
+                situacionLaboral: 'INACTIVO'
+            },
+            include: [Ingreso, Egreso],
+            order: ["id"],
+         })
+         return employees
+    }
+    catch(error) {
+         console.log('Error in getAllInactiveEmployees', error)
+    }
+}
+
+async function getInactiveEmployeeByIdSearch(id) {
+    try{
+        const employeeId = await Empleado.findAll({  
+            where: {
+                id: id,
+                situacionLaboral: 'INACTIVO'
+            },
+            include: [Ingreso, Egreso],      
+        }) 
+
+        return employeeId
+    } catch (error) {
+            console.log('Error in getInactiveEmployeeByIdSearch', error)
+    }
+}
+
+async function getInactiveEmployeesByName(apellido) {
+    try{
+        const employeesByName = await Empleado.findAll({  
+            where: {
+                apellido: {
+                    [Op.iLike]: `%${apellido}%`
+                },
+                situacionLaboral: 'INACTIVO'
+            }   
+        }) 
+
+        return employeesByName
+    } catch (error) {
+            console.log('Error in getInactiveEmployeesByName', error)
+    }
+}
+
 
 module.exports = {
     postEmployee,
@@ -213,5 +264,8 @@ module.exports = {
     getAllActiveEmployees,
     getActiveEmployeeByIdSearch,
     getActiveEmployeesByName,
-    getActiveEmployeesByStatus
+    getActiveEmployeesByStatus,
+    getInactiveEmployeeByIdSearch,
+    getInactiveEmployeesByName,
+    getAllInactiveEmployees
 }

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postEmployee, putEmployee, getEmployeesByStatus, getAllEmployees, getEmployeeById, getEmployeesByName, getEmployeeByIdSearch, getActiveEmployeeByIdSearch, getActiveEmployeesByName, getAllActiveEmployees, getActiveEmployeesByStatus, putEmployeeActivity } = require('../controllers/empleadosControllers');
+const { postEmployee, putEmployee, getEmployeesByStatus, getAllEmployees, getEmployeeById, getEmployeesByName, getEmployeeByIdSearch, getActiveEmployeeByIdSearch, getActiveEmployeesByName, getAllActiveEmployees, getActiveEmployeesByStatus, putEmployeeActivity, getInactiveEmployeeByIdSearch, getInactiveEmployeesByName, getAllInactiveEmployees } = require('../controllers/empleadosControllers');
 const { Empleado, Ingreso, Egreso } = require('../db');
 
 
@@ -51,6 +51,36 @@ router.put('/:id', async (req,res) => {
         res.status(200).send(modifyEmployee);
     } catch (error) {
         console.log('Error putEmployeeRoute' + error);
+    }
+})
+
+router.get('/inactivos', async (req,res) => {
+    const {id, status, search} = req.query
+    try {
+        if(id){
+            const idEmployee = await getInactiveEmployeeByIdSearch(id);
+            if(idEmployee){
+                res.status(200).send(idEmployee);
+            }
+            else{
+                res.status(404).send('Employee not found');
+            }
+        }
+        else if(search){
+            const searchedEmployees = await getInactiveEmployeesByName(search);
+            if(searchedEmployees){
+                res.status(200).send(searchedEmployees);
+            }
+            else{
+                res.status(404).send('Employees not found');
+            }
+        }  
+        else {
+            let allEmployees = await getAllInactiveEmployees();
+            res.status(200).send(allEmployees);
+        }
+    } catch (error) {
+        console.log('Error getInactiveEmployeesRoute' + error);;
     }
 })
 

@@ -10,7 +10,7 @@ const populateDb = async () => {
             email: "lucianommorea@gmail.com",
             fechaNacimiento: "1992/07/07",
             telefono: "22360059989",
-            domicilio: "Azcuenaga 713",
+            domicilio: "Rafael de Riego 146",
             ciudad: "Mar del Plata",
             fechaAlta: "2022/05/02"
         },
@@ -46,17 +46,6 @@ const populateDb = async () => {
             domicilio: "Rondeau 546",
             ciudad: "Mar del Plata",
             fechaAlta: "2021/06/11"
-        },
-        {
-            nombre: "Santiago",
-            apellido: "Ras",
-            dni: 19857654,
-            email: "santiagoras@gmail.com",
-            fechaNacimiento: "1966/08/01",
-            telefono: "65686saf",
-            domicilio: "Rio Negro 546",
-            ciudad: "Mar del Plata",
-            fechaAlta: "2021/02/02"
         },
         {
             nombre: "Lourdes",

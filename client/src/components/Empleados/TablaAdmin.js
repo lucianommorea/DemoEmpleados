@@ -18,13 +18,13 @@ function TablaAdmin({width}) {
 
                 <p className={`col-3 ${style.tableTop}`}>Apellido</p>
                 <p className={`col-3 ${style.tableTop}`}>Nombre</p>
-                <p className={`col-2 ${style.tableTop}`}>Legajo</p> 
+                <p className={`col-1 ${style.tableTop}`}>Legajo</p> 
                 {
                     width > 700 ?
                     <p className={`col-2 ${style.tableTop}`}>En Empresa</p> :
                     <p className={`col-2 ${style.tableTop}`}>Trabaja</p> 
                 }
-
+                <p className={`col-1 ${style.tableTop}`}>Activo</p> 
                 <p className={`col-2 ${style.tableTop}`}>Editar</p> 
 
         </div>
@@ -37,12 +37,21 @@ function TablaAdmin({width}) {
  
                         <p className={`col-3 ${style.tableDown}`}>{e.apellido}</p>
                         <p className={`col-3 ${style.tableDown}`}>{e.nombre}</p>
-                        <p className={`col-2 ${style.tableDown}`}>{e.id}</p> 
+                        <p className={`col-1 ${style.tableDown}`}>{e.id}</p> 
                         {
                             e.estado === 'IN' ?
                             <p className={`col-2 ${style.tableDown}`}> <CheckCircleRoundedIcon color='success' /> </p> :
                             <p className={`col-2 ${style.tableDown}`}> <RemoveCircleRoundedIcon color='error' /> </p>
                         } 
+
+                        <p className={`col-1 ${style.tableDown}`}> 
+                            {
+                                e.situacionLaboral === 'ACTIVO' ?
+                                <span> SI </span> :
+                                <span> NO </span> 
+                            }
+                        </p> 
+
                         <p className={`col-2 ${style.tableDown}`}> 
                             <AddCircleOutlineRoundedIcon className={style.edit} onClick={() => navigate(`/empleados/perfil/${e.id}`)} /> 
                         </p> 
