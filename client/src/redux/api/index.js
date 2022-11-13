@@ -3,11 +3,16 @@ import axios from "axios";
 // RUTAS Empleados
 export const postEmployee = (employee) => axios.post(`/empleados`, employee);
 export const putEmployeeInfo = (id, modify) => axios.put(`/empleados/${id}`, modify);
+export const putEmployeeActivity = (id, modify) => axios.put(`/empleados/actividad/${id}`, modify);
 export const getAllEmployees = () => axios.get('/empleados');
 export const getEmployeeIdSearch = (id) => axios.get(`/empleados?id=${id}`);
 export const getEmployeeStatus = (status) => axios.get(`/empleados?status=${status}`);
 export const getEmployeesName = (search) => axios.get(`/empleados?search=${search}`);
 export const getEmployeeId = (id) => axios.get(`/empleados/${id}`);
+export const getAllActiveEmployees = () => axios.get('/empleados/activos');
+export const getActiveEmployeeIdSearch = (id) => axios.get(`/empleados/activos?id=${id}`);
+export const getActiveEmployeesName = (search) => axios.get(`/empleados/activos?search=${search}`);
+export const getActiveEmployeeStatus = (status) => axios.get(`/empleados/activos?status=${status}`);
 
 // RUTAS Ingresos
 export const postIngreso = (ingreso) => axios.post(`/ingresos`, ingreso);

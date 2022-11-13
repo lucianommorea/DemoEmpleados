@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postEmployee, putEmployee, getEmployeesByStatus, getAllEmployees, getEmployeeById, getEmployeesByName, getEmployeeByIdSearch } = require('../controllers/empleadosControllers');
+const { postEmployee, putEmployee, getEmployeesByStatus, getAllEmployees, getEmployeeById, getEmployeesByName, getEmployeeByIdSearch, getActiveEmployeeByIdSearch, getActiveEmployeesByName, getAllActiveEmployees, getActiveEmployeesByStatus, putEmployeeActivity } = require('../controllers/empleadosControllers');
 const { Empleado, Ingreso, Egreso } = require('../db');
 
 
@@ -32,6 +32,17 @@ router.post('/', async function (req, res){
     }
 })
 
+router.put('/actividad/:id', async (req,res) => {
+    const {id} = req.params;
+    const {situacionLaboral} = req.body;
+    try {
+        let modifyEmployee = await putEmployeeActivity(id, situacionLaboral);
+        res.status(200).send(modifyEmployee);
+    } catch (error) {
+        console.log('Error putEmployeeActivityRoute' + error);
+    }
+})
+
 router.put('/:id', async (req,res) => {
     const {id} = req.params;
     const {nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta, fechaBaja} = req.body;
@@ -40,6 +51,46 @@ router.put('/:id', async (req,res) => {
         res.status(200).send(modifyEmployee);
     } catch (error) {
         console.log('Error putEmployeeRoute' + error);
+    }
+})
+
+
+router.get('/activos', async (req,res) => {
+    const {id, status, search} = req.query
+    try {
+        if(id){
+            const idEmployee = await getActiveEmployeeByIdSearch(id);
+            if(idEmployee){
+                res.status(200).send(idEmployee);
+            }
+            else{
+                res.status(404).send('Employee not found');
+            }
+        }
+        else if(status){
+            const statusEmployees = await getActiveEmployeesByStatus(status);
+            if(statusEmployees){
+                res.status(200).send(statusEmployees);
+            }
+            else{
+                res.status(404).send('Employees not found');
+            }
+        }  
+        else if(search){
+            const searchedEmployees = await getActiveEmployeesByName(search);
+            if(searchedEmployees){
+                res.status(200).send(searchedEmployees);
+            }
+            else{
+                res.status(404).send('Employees not found');
+            }
+        }  
+        else {
+            let allEmployees = await getAllActiveEmployees();
+            res.status(200).send(allEmployees);
+        }
+    } catch (error) {
+        console.log('Error getActiveEmployeesRoute' + error);;
     }
 })
 
@@ -53,6 +104,7 @@ router.get('/:id', async (req,res) => {
         console.log('Error getEmployeesRoute' + error);;
     }
 })
+
 
 router.get('/', async (req,res) => {
     const {id, status, search} = req.query
@@ -92,6 +144,7 @@ router.get('/', async (req,res) => {
         console.log('Error getEmployeesRoute' + error);;
     }
 })
+
 
 
 module.exports = router

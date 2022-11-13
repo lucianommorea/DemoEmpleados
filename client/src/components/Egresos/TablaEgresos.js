@@ -26,7 +26,7 @@ function TablaEgresos({width}) {
             }
             {
                 width > 1100 ?
-                <p className={`col-2 ${style.tableTop}`}>Legajo</p> :
+                <p className={`col-3 ${style.tableTop}`}>Legajo</p> :
                 null
             }
             {
@@ -53,7 +53,7 @@ function TablaEgresos({width}) {
                 }
                 {
                     width > 1100 ?
-                    <p className={`col-2 ${style.tableDown}`}>{e.id}</p> :
+                    <p className={`col-3 ${style.tableDown}`}>{e.id}</p> :
                     null
                 }
                 {
@@ -72,12 +72,12 @@ function TablaEgresos({width}) {
                     width > 1100 ?
                     <p className={`col-3 ${style.tableTop}`}>
                         <Link to={`/empleados/${e.id}`} className={style.toUser}>
-                            <button className={style.registrarE} > Registrar Egreso </button> 
+                            <button className={style.registrar} > Registrar Egreso </button> 
                         </Link>
                     </p> :
                     <p className={`col-4 ${style.tableTop}`}> 
                         <Link to={`/empleados/${e.id}`} className={style.toUser}>
-                            <button className={style.registrarE} >Registrar </button> 
+                            <button className={style.registrar} >Registrar </button> 
                         </Link>
                     </p>
                 } 

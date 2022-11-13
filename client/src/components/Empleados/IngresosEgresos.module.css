@@ -1,0 +1,71 @@
+.all{
+    display: flex;
+    flex-direction: row;
+    /* font-family: 'Open Sans', sans-serif; */
+    border-radius: 0.5vw;
+}
+
+/* .tipo{
+    font-size: 1.2rem;
+    text-align: center;
+    width: 15%;
+    border: 1px solid black;
+} */
+
+.hora{
+    font-size: 1.2rem;
+    min-width: 1.2rem;
+    text-align: center;
+    width: 33.5%;
+    margin-bottom: 5px;
+}
+
+.horasR{
+    font-size: 1.2rem;
+    width: 33%;
+    text-align: center;
+    color: #c82002;
+}
+
+.horasV{
+    font-size: 1.2rem;
+    width: 33%;
+    text-align: center;
+    color: green;
+}
+
+@media screen and (max-width: 900px) {
+    .hora{
+        font-size: 1rem;
+    }
+    .horasR{
+        font-size: 1rem;
+    }
+    .horasV{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hora{
+        font-size: 0.9rem;
+    }
+    .horasR{
+        font-size: 0.9rem;
+    }
+    .horasV{
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .hora{
+        font-size: 0.8rem;
+    }
+    .horasR{
+        font-size: 0.8rem;
+    }
+    .horasV{
+        font-size: 0.8rem;
+    }
+}

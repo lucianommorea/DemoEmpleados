@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getEmployeeId, postEgreso, postIngreso } from '../../redux/actions';
+import { getEmployeeId, getIngresoByEmployee, postEgreso, postIngreso } from '../../redux/actions';
 import style from './Empleado.module.css';
 import Button from '@mui/material/Button';
 import Swal from 'sweetalert2';
+import IngresosEgresos from '../Empleados/IngresosEgresos';
 const moment = require('moment');
 
 
@@ -12,15 +13,16 @@ function Empleado() {
 
   const dispatch = useDispatch();
   const employee = useSelector(state => state.employee);
+  const ingresos = useSelector(state => state.ingresos);
   const { id } = useParams();
   const navigate = useNavigate();
   let [input, setInput] = useState('');
   let [error, setError] = useState('');
   let dateNow = new Date();
 
-
   useEffect(() => {
     dispatch(getEmployeeId(id));
+    dispatch(getIngresoByEmployee(id));
   }, [dispatch, id]);
 
   function validate(input) {
@@ -59,16 +61,17 @@ function Empleado() {
       let diffM = fecha2.diff(fecha1, 'm');
       let minutes = diffM % 60;
       let horasMinTrabajadas = `${diff} hs. ${minutes} minutos`;
-      let masOchoHoras = diffM > 480 ? true : false
+      let masOchoHoras = diffM > 480 ? true : false;
       if(masOchoHoras){
-        console.log('mas8horas')
         Swal.fire(
           'Advertencia', `${employee.nombre} ${employee.apellido} trabajó ${horasMinTrabajadas}`, 'warning'
         )
       }
-      Swal.fire(
-        'Egreso confirmado', `${employee.nombre} ${employee.apellido} trabajó ${horasMinTrabajadas}`, 'success'
-      )
+      else {
+        Swal.fire(
+          'Egreso confirmado', `${employee.nombre} ${employee.apellido} trabajó ${horasMinTrabajadas}`, 'success'
+        )
+      }
 
     }
     navigate('/')
@@ -116,9 +119,37 @@ function Empleado() {
 
 
           }
-        </div>
+        </div>    
+      </div>
+      <div className={style.historial}>
+        <h3> Historial </h3>
+      </div>
 
-    
+      <div className={style.bottom}>
+
+        <div className={style.up}>
+            <div className={style.hora}>
+                Ingreso
+            </div>
+            <div className={style.hora}>
+                Egreso
+            </div>
+            <div className={style.horas}>
+                Horas Trabajadas
+            </div>
+        </div>
+        {
+          ingresos && employee && ingresos.map( (e) => 
+          employee.ingresos.length === 0 ?
+          <div> No existen ingresos registrados </div> : 
+          <IngresosEgresos  key={e.id}
+                            ingreso1={e.date} 
+                            egreso1={e.egreso ? e.egreso.date : null} 
+                            horasTrans={e.horasMinTrabajadas}
+                            masOchoHoras={e.masOchoHoras}/> 
+
+          )
+        }
       </div>
 
      

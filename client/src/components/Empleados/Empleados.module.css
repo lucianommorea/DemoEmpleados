@@ -1,5 +1,4 @@
 .all{
-    /* background-color: #fff; */
     background-color: rgb(238, 238, 238);
     background-size: cover;
     display: flex;
@@ -8,10 +7,9 @@
 }
 
 .top{
-    /* border: 1px solid black; */
     text-align: center;
-    margin-top: 3vh;
-    margin-bottom: 2vh;
+    margin-top: 4vh;
+    margin-bottom: 3.5vh;
 }
 
 .title {
@@ -25,4 +23,66 @@
     background-color: rgb(238, 238, 238);
     background-color: #fff;
     border-radius: 0.5vw;
+}
+
+.search{
+    margin-bottom: 2vh;
+}
+
+.divBtnAdd{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    display: grid; 
+    place-content: end;
+    margin-right: 2vh;
+}
+
+.btnAdd{
+    background-color: green;
+    border: 2px solid green;
+    color: white;
+    border-radius: 0.5vh;
+    font-size: medium;
+    font-weight: 450;
+}
+
+.btnAdd:hover{
+    background-color: rgb(177, 214, 177);
+    border: 2px solid rgb(79, 129, 79);
+    color: green;
+    border-radius: 0.5vh;
+    font-size: medium;
+    text-align: center;
+    font-weight: 450;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .divBtnAdd{
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        display: grid;
+        place-content: center;
+    }
+
+    .btnAdd{
+        background-color: green;
+        border: 2px solid green;
+        color: white;
+        border-radius: 0.5vh;
+        font-size: 11px;
+        text-align: center;
+        font-weight: 450;
+    }
+    
+    .btnAdd:hover{
+        background-color: rgb(177, 214, 177);
+        border: 2.5px solid green;
+        color: green;
+        border-radius: 0.5vh;
+        font-size: small;
+        text-align: center;
+        font-weight: 450;
+    }
 }

@@ -10,8 +10,8 @@
 .top{
     /* border: 1px solid black; */
     text-align: center;
-    margin-top: 3vh;
-    margin-bottom: 2vh;
+    margin-top: 4vh;
+    margin-bottom: 3.5vh;
 }
 
 .title {
@@ -44,10 +44,20 @@
     margin-left: 1vw;
     font-size: large;
     text-align: center;
+    font-weight: 400;
     /* color: gray; */
 }
 
-
 .tablaEmployees{
     margin-top: 1vh;
+}
+
+@media screen and (max-width: 800px) {
+    .total{
+        font-size:small;
+        font-weight: 500;
+    }
+    .label{
+        font-size:small;
+    }
 }

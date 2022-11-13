@@ -25,7 +25,7 @@ function TablaIngresos({width}) {
             }
             {
                 width > 1100 ?
-                <p className={`col-2 ${style.tableTop}`}>Legajo</p> :
+                <p className={`col-3 ${style.tableTop}`}>Legajo</p> :
                 null
             }
             {
@@ -52,7 +52,7 @@ function TablaIngresos({width}) {
                 }
                 {
                     width > 1100 ?
-                    <p className={`col-2 ${style.tableDown}`}>{e.id}</p> :
+                    <p className={`col-3 ${style.tableDown}`}>{e.id}</p> :
                     null
                 }
                 {

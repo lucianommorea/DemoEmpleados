@@ -1,5 +1,5 @@
 .all{
-    background-color: #fff;
+    /* background-color: #fff; */
     background-color: rgb(238, 238, 238);
     background-size: cover;
     display: flex;
@@ -10,8 +10,8 @@
 .top{
     /* border: 1px solid black; */
     text-align: center;
-    margin-top: 3vh;
-    margin-bottom: 2vh;
+    margin-top: 4vh;
+    margin-bottom: 3.5vh;
 }
 
 .title {
@@ -24,7 +24,7 @@
     max-width: 96%;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(238, 238, 238);
+    margin-bottom: 4vh;
     background-color: #fff;
     border-radius: 0.5vw;
 }
@@ -71,14 +71,70 @@
     margin-top: -10px;
 }
 
+.historial{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.bottom {
+    width: 60%;
+    /* min-width: min-content; */
+    max-width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+    margin-bottom: 4vh;
+    background-color: #fff;
+    border-radius: 0.5vw;
+}
+
+.up{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid black;
+    padding-bottom: 0.4vh;
+    margin-bottom: 1vh;
+}
+
+.hora{
+    font-size: 1.2rem;
+    min-width: 1.2rem;
+    text-align: center;
+    width: 33.5%;
+}
+
+.horas{
+    font-size: 1.2rem;
+    width: 33%;
+    text-align: center;
+}
+
 @media screen and (max-width: 900px) {
     .down {
         width: 70%;
+    }
+    .bottom {
+        width: 80%;
+    }
+    .hora{
+        font-size: 1rem;
+    }
+    .horas{
+        font-size: 1rem;
     }
 }
 
 @media screen and (max-width: 600px) {
     .down {
         width: 90%;
+    }
+    .bottom {
+        width: 96%;
+    }
+    .hora{
+        font-size: 0.9rem;
+    }
+    .horas{
+        font-size: 0.9rem;
     }
 }

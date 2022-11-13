@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { GET_ALL_EGRESOS, GET_ALL_EMPLOYEES, GET_ALL_INGRESOS, GET_EGRESOS_EMPLOYEE, GET_EGRESOS_ID, GET_EMPLOYEES_STATUS, GET_EMPLOYEE_ID, GET_EMPLOYEES_NAME, GET_INGRESOS_EMPLOYEE, GET_INGRESOS_ID, POST_EGRESO, POST_EMPLOYEE, POST_INGRESO, PUT_EGRESOS, PUT_EMPLOYEE_INFO, PUT_INGRESOS, GET_EMPLOYEE_ID_SEARCH } from "./actionTypes";
+import { GET_ALL_EGRESOS, GET_ALL_EMPLOYEES, GET_ALL_INGRESOS, GET_EGRESOS_EMPLOYEE, GET_EGRESOS_ID, GET_EMPLOYEES_STATUS, GET_EMPLOYEE_ID, GET_EMPLOYEES_NAME, GET_INGRESOS_EMPLOYEE, GET_INGRESOS_ID, POST_EGRESO, POST_EMPLOYEE, POST_INGRESO, PUT_EGRESOS, PUT_EMPLOYEE_INFO, PUT_INGRESOS, GET_EMPLOYEE_ID_SEARCH, GET_ALL_ACTIVE_EMPLOYEES, GET_ACTIVE_EMPLOYEE_ID_SEARCH, GET_ACTIVE_EMPLOYEES_NAME, GET_ACTIVE_EMPLOYEES_STATUS, PUT_EMPLOYEE_ACTIVITY } from "./actionTypes";
 
 export const postEmployee = (employee) => async (dispatch) => {
     try {
@@ -19,6 +19,14 @@ export const putEmployeeInfo = (id, modify) => async (dispatch) => {
     }
 };
 
+export const putEmployeeActivity = (id, modify) => async (dispatch) => {
+  try {
+    const {data} = await api.putEmployeeActivity(id, modify);
+    dispatch({ type: PUT_EMPLOYEE_ACTIVITY, payload: data})
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 
 export const getAllEmployees = () => async (dispatch) => {
     try {
@@ -63,6 +71,42 @@ export const getEmployeesName = (search) => async (dispatch) => {
     } catch (error) {
       console.log(error.message);
     }
+};
+
+export const getAllActiveEmployees = () => async (dispatch) => {
+  try {
+    const { data } = await api.getAllActiveEmployees();
+    dispatch({ type: GET_ALL_ACTIVE_EMPLOYEES, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getActiveEmployeeIdSearch = (id) => async (dispatch) => {
+try {
+    const { data } = await api.getActiveEmployeeIdSearch(id);
+    dispatch({ type: GET_ACTIVE_EMPLOYEE_ID_SEARCH, payload: data });
+  } catch (error) {
+  console.log(error.message);
+}
+};
+
+export const getActiveEmployeesName = (search) => async (dispatch) => {
+  try {
+    const { data } = await api.getActiveEmployeesName(search);
+    dispatch({ type: GET_ACTIVE_EMPLOYEES_NAME, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const getActiveEmployeeStatus = (status) => async (dispatch) => {
+  try {
+    const { data } = await api.getActiveEmployeeStatus(status);
+    dispatch({ type: GET_ACTIVE_EMPLOYEES_STATUS, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export const postIngreso = (ingreso) => async (dispatch) => {
@@ -128,7 +172,6 @@ export const putEgresos = (id, modify) => async (dispatch) => {
       console.log(error.message);
     }
 };
-
 
 export const getAllEgresos = () => async (dispatch) => {
     try {

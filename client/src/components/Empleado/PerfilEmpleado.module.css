@@ -8,8 +8,8 @@
 
 .top{
     text-align: center;
-    margin-top: 4vh;
-    margin-bottom: 3.5vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
 }
 
 .title {
@@ -17,7 +17,7 @@
 }
 
 .down {
-    width: 80%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(238, 238, 238);
@@ -25,7 +25,22 @@
     border-radius: 0.5vw;
 }
 
-.search{
-    margin-bottom: 2vh;
+@media screen and (max-width: 800px) {
+    .down {
+        width: 70%;
+    }
 }
 
+@media screen and (max-width: 600px) {
+    .down {
+        width: 80%;
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .down {
+        width: 92%;
+        font-size: small;
+    }
+}

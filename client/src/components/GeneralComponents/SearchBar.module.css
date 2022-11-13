@@ -1,0 +1,18 @@
+.input{
+    border: 2px solid rgb(118, 77, 77);
+}
+
+.button{
+    min-width: 80px;
+}
+
+@media screen and (max-width: 800px) {
+    .input{
+        font-size:small;
+    }
+    .button{
+        font-size:small;
+        width: 50px;
+        min-width: 60px;
+    }
+}

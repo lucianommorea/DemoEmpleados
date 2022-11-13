@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import style from './TablaEmpleados.module.css';
-
+import { Link } from 'react-router-dom';
 
 function TablaEmpleados({width, status}) {
 
@@ -50,37 +50,39 @@ function TablaEmpleados({width, status}) {
      
         {   employees.map((e) => 
                 employees.length > 0 ?
-                <div className={`row align-items-start ${style.info}`} key={e.id}>
-                {
-                    width > 1100 ?
-                    <p className={`col-3 ${style.tableDown}`}>{e.apellido}</p> :
-                    <p className={`col-4 ${style.tableDown}`}>{e.apellido}</p>
-                }
-                {
-                    width > 1100 ?
-                    <p className={`col-3 ${style.tableDown}`}>{e.nombre}</p> :
-                    <p className={`col-4 ${style.tableDown}`}>{e.nombre}</p>
-                }
-                {
-                    width > 1100 ?
-                    <p className={`col-1 ${style.tableDown}`}>{e.id}</p> :
-                    null
-                }
-                {
-                    width > 1100 ?
-                    <p className={`col-2 ${style.tableDown}`}>{formatNumber(e.dni)}</p> :
-                    null
-                }
-                {
-                    status === 'IN' ?
-                    width > 1100 ?
-                    <p className={`col-3 ${style.tableTop}`}>{e?.ingresos[e.ingresos.length-1]?.date.slice(0,10)} {e?.ingresos[e.ingresos.length-1]?.date.slice(11,19)}</p> :
-                    <p className={`col-4 ${style.tableTop}`}>{e?.ingresos[e.ingresos.length-1]?.date.slice(0,10)} {e?.ingresos[e.ingresos.length-1]?.date.slice(11,19)}</p> :
-                    width > 1100 ?
-                    <p className={`col-3 ${style.tableTop}`}>{e?.egresos[e.egresos.length-1]?.date.slice(0,10)} {e?.egresos[e.egresos.length-1]?.date.slice(11,19)} </p> :
-                    <p className={`col-4 ${style.tableTop}`}>{e?.egresos[e.egresos.length-1]?.date.slice(0,10)} {e?.egresos[e.egresos.length-1]?.date.slice(11,19)} </p>
-                } 
-                </div> 
+                <Link to={`/empleados/${e.id}`} className={style.toUser}>
+                    <div className={`row align-items-start ${style.info}`} key={e.id}>
+                    {
+                        width > 1100 ?
+                        <p className={`col-3 ${style.tableDown}`}>{e.apellido}</p> :
+                        <p className={`col-4 ${style.tableDown}`}>{e.apellido}</p>
+                    }
+                    {
+                        width > 1100 ?
+                        <p className={`col-3 ${style.tableDown}`}>{e.nombre}</p> :
+                        <p className={`col-4 ${style.tableDown}`}>{e.nombre}</p>
+                    }
+                    {
+                        width > 1100 ?
+                        <p className={`col-1 ${style.tableDown}`}>{e.id}</p> :
+                        null
+                    }
+                    {
+                        width > 1100 ?
+                        <p className={`col-2 ${style.tableDown}`}>{formatNumber(e.dni)}</p> :
+                        null
+                    }
+                    {
+                        status === 'IN' ?
+                        width > 1100 ?
+                        <p className={`col-3 ${style.tableTop}`}>{e?.ingresos[e.ingresos.length-1]?.date.slice(0,10)} {e?.ingresos[e.ingresos.length-1]?.date.slice(11,19)}</p> :
+                        <p className={`col-4 ${style.tableTop}`}>{e?.ingresos[e.ingresos.length-1]?.date.slice(0,10)} {e?.ingresos[e.ingresos.length-1]?.date.slice(11,19)}</p> :
+                        width > 1100 ?
+                        <p className={`col-3 ${style.tableTop}`}>{e?.egresos[e.egresos.length-1]?.date.slice(0,10)} {e?.egresos[e.egresos.length-1]?.date.slice(11,19)} </p> :
+                        <p className={`col-4 ${style.tableTop}`}>{e?.egresos[e.egresos.length-1]?.date.slice(0,10)} {e?.egresos[e.egresos.length-1]?.date.slice(11,19)} </p>
+                    } 
+                    </div> 
+                </Link>
                 : null
         )}
         </div>

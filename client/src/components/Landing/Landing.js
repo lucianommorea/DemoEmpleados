@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getEmployeeStatus } from '../../redux/actions';
+import { getActiveEmployeeStatus } from '../../redux/actions';
 import style from './Landing.module.css';
-import { Link } from "react-router-dom";
 import TablaEmpleados from './TablaEmpleados';
-// import Loading from '../Loading/LoadingComponent';
-
 
 
 function Landing() {
@@ -26,7 +23,7 @@ function Landing() {
 
 
   useEffect(() => {
-    dispatch(getEmployeeStatus(status))
+    dispatch(getActiveEmployeeStatus(status))
   }, [dispatch, status]);
 
   function handleCheck(e){
@@ -43,11 +40,11 @@ function Landing() {
           <div className={style.check}>
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="IN" onChange={handleCheck} defaultChecked />
-              <label className="form-check-label" htmlFor="inlineRadio1">Empleados en la Empresa</label>
+              <label className={`form-check-label ${style.label}`} htmlFor="inlineRadio1">Empleados en la Empresa</label>
             </div>
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="OUT" onChange={handleCheck} />
-              <label className="form-check-label" htmlFor="inlineRadio2">Empleados fuera de la Empresa</label>
+              <label className={`form-check-label ${style.label}`} htmlFor="inlineRadio2">Empleados fuera de la Empresa</label>
             </div>
           </div>
 
