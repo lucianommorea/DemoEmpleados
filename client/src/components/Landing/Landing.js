@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getActiveEmployeeStatus } from '../../redux/actions';
+import { cleanEmployees, getActiveEmployeeStatus } from '../../redux/actions';
 import style from './Landing.module.css';
 import TablaEmpleados from './TablaEmpleados';
 
@@ -23,7 +23,8 @@ function Landing() {
 
 
   useEffect(() => {
-    dispatch(getActiveEmployeeStatus(status))
+    dispatch(getActiveEmployeeStatus(status));
+    return () => dispatch(cleanEmployees())
   }, [dispatch, status]);
 
   function handleCheck(e){

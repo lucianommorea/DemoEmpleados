@@ -16,9 +16,9 @@ const HeaderLogin = () => {
             </Link>
           </div>
           <div className={`col-lg-3 ${style.colPreg}`}>
-            <NavLink to="/empleados" className={({isActive}) => isActive ? style.linksIntActive : style.linksInt}>
+            <Link to="/empleados" className={ location.pathname === '/empleados' ? style.linksIntActive : style.linksInt}>
                Empleados
-            </NavLink>
+            </Link>
           </div>
           <div className={`col-lg-3 ${style.colPreg}`}>
             <NavLink to="/ingresos" className={({isActive}) => isActive ? style.linksIntActive : style.linksInt}>

@@ -1,4 +1,4 @@
-import { GET_ALL_EMPLOYEES, GET_EMPLOYEES_STATUS, GET_EMPLOYEES_NAME, GET_EMPLOYEE_ID_SEARCH, GET_ALL_ACTIVE_EMPLOYEES, GET_ACTIVE_EMPLOYEES_NAME, GET_ACTIVE_EMPLOYEE_ID_SEARCH, GET_ACTIVE_EMPLOYEES_STATUS } from "../actions/actionTypes"
+import { GET_ALL_EMPLOYEES, GET_EMPLOYEES_STATUS, GET_EMPLOYEES_NAME, GET_EMPLOYEE_ID_SEARCH, GET_ALL_ACTIVE_EMPLOYEES, GET_ACTIVE_EMPLOYEES_NAME, GET_ACTIVE_EMPLOYEE_ID_SEARCH, GET_ACTIVE_EMPLOYEES_STATUS, CLEAN_EMPLOYEES } from "../actions/actionTypes"
 
 export default function employees (state = [], action){
     switch(action.type){
@@ -18,6 +18,8 @@ export default function employees (state = [], action){
             return action.payload;
         case GET_ACTIVE_EMPLOYEES_STATUS:
             return action.payload;
+        case CLEAN_EMPLOYEES:
+            return [];
         default:
             return state            
     }

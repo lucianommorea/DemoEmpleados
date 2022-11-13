@@ -54,10 +54,11 @@
 
 .btnConfirm {
     margin-top: 2vh;
-    width: 100%;
-    background-color: green;
+    width: 48%;
+    margin-right: 4%;
+    background-color: #c86202;
     color: white;
-    border: 1px solid green;
+    border: 1px solid #c86202;
     border-radius: 0.5vh;
     cursor: pointer;
 }
@@ -71,14 +72,65 @@
     color: gray;
 }
 
-.btn {
+.btnConfirm2 {
     margin-top: 2vh;
-    width: 100%;
-    background-color: #c86202;
+    width: 48%;
+    background-color: green;
     color: white;
-    border: 1px solid #c86202;
+    border: 1px solid green;
     border-radius: 0.5vh;
     cursor: pointer;
+}
+
+.btnConfirm2:disabled{
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    cursor: text;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+}
+
+.btn1 {
+    margin-top: 2vh;
+    width: 48%;
+    margin-right: 4%;
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    border-radius: 0.5vh;
+    cursor: pointer;
+}
+
+.btn2 {
+    margin-top: 2vh;
+    width: 48%;
+    background-color: #c82002;
+    color: white;
+    border: 1px solid #c82002;
+    border-radius: 0.5vh;
+    cursor: pointer;
+}
+
+.btn3 {
+    margin-top: 2vh;
+    width: 48%;
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+    border-radius: 0.5vh;
+    cursor: pointer;
+}
+
+.label2 {
+    width: 50%;
+    text-align:start;
+    font-size: medium;
+    padding-left: 25%;
+}
+
+.campo{
+    font-weight: 500;
 }
 
 
@@ -86,6 +138,11 @@
     .label1 {
         width: 40%;
         text-align:start;
+        font-size: small;
+        padding-left: 20%;
+    }
+
+    .label2 {
         font-size: small;
         padding-left: 20%;
     }

@@ -5,9 +5,9 @@ import Ingresos from "./components/Ingresos/Ingresos";
 import NotFound from "./components/NotFound/NotFound";
 import Empleados from "./components/Empleados/Empleados";
 import Egresos from "./components/Egresos/Egresos";
-import Empleado from "./components/Empleado/Empleado";
-import CrearEmpleado from "./components/Empleado/CrearEmpleado";
-import PerfilEmpleado from "./components/Empleado/PerfilEmpleado";
+import CrearEmpleado from "./components/CrearEmpleado/CrearEmpleado";
+import PerfilEmpleado from "./components/EmpleadoPerfil/PerfilEmpleado";
+import EmpleadoIngreso from "./components/EmpleadoIngreso/EmpleadoIngreso";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path={"/empleados"} element={<Empleados />} />
         <Route path={"/empleados/perfil/:id"} element={<PerfilEmpleado />} />
         <Route path={"/empleados/crear"} element={<CrearEmpleado />} />
-        <Route path={"/empleados/:id"} element={<Empleado />} />
+        <Route path={"/empleados/:id"} element={<EmpleadoIngreso />} />
         <Route path={"/ingresos"} element={<Ingresos />} />
         <Route path={"/egresos"} element={<Egresos />} />
         <Route path={"*"} element={<NotFound />} />

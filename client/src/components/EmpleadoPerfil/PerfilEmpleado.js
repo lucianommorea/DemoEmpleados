@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import style from './PerfilEmpleado.module.css';
 import FormPerfilEmpleado from './FormPerfilEmpleado';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllEmployees, getEmployeeId } from '../../redux/actions';
+import { getEmployeeId } from '../../redux/actions';
 import { useParams } from 'react-router-dom';
 
 
@@ -14,7 +14,7 @@ function PerfilEmpleado() {
 
   useEffect(()=> {
     dispatch(getEmployeeId(id));
-    dispatch(getAllEmployees());
+    // dispatch(getAllEmployees());
   }, [dispatch, id])
 
 
@@ -27,7 +27,7 @@ function PerfilEmpleado() {
         <div>
           <FormPerfilEmpleado nombre={employee.nombre} apellido={employee.apellido} dni={employee.dni} email={employee.email}
                               fechaNacimiento={employee.fechaNacimiento} telefono={employee.telefono} domicilio={employee.domicilio}
-                              ciudad={employee.ciudad} fechaAlta={employee.fechaAlta}  />
+                              ciudad={employee.ciudad} fechaAlta={employee.fechaAlta} fechaBaja={employee.fechaBaja} />
         </div>
         
       </div>

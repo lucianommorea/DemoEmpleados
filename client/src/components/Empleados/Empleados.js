@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllEmployees } from '../../redux/actions';
+import { cleanEmployees, getAllEmployees } from '../../redux/actions';
 import style from './Empleados.module.css';
 import SearchBar from '../GeneralComponents/SearchBar';
 import TablaAdmin from './TablaAdmin';
@@ -20,7 +20,8 @@ function Empleados() {
   }, []);
 
   useEffect(() => {
-    dispatch(getAllEmployees())
+    dispatch(getAllEmployees());
+    return ()=> dispatch(cleanEmployees());
   }, [dispatch]);
     
 

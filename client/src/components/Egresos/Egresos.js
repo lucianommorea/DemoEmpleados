@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllEmployees } from '../../redux/actions';
+import { cleanEmployees, getAllActiveEmployees } from '../../redux/actions';
 import SearchBarActive from '../GeneralComponents/SearchBarActive';
 import style from '../Ingresos/Ingresos.module.css';
 import TablaEgresos from './TablaEgresos';
@@ -17,7 +17,8 @@ function Egresos() {
   }, []);
 
   useEffect(() => {
-    dispatch(getAllEmployees())
+    dispatch(getAllActiveEmployees());
+    return () => dispatch(cleanEmployees());
   }, [dispatch]);
     
 
