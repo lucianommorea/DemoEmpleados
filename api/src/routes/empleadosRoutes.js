@@ -34,9 +34,9 @@ router.post('/', async function (req, res){
 
 router.put('/actividad/:id', async (req,res) => {
     const {id} = req.params;
-    const {situacionLaboral} = req.body;
+    const {situacionLaboral, fechaBaja} = req.body;
     try {
-        let modifyEmployee = await putEmployeeActivity(id, situacionLaboral);
+        let modifyEmployee = await putEmployeeActivity(id, situacionLaboral, fechaBaja);
         res.status(200).send(modifyEmployee);
     } catch (error) {
         console.log('Error putEmployeeActivityRoute' + error);

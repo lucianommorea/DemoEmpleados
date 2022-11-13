@@ -40,7 +40,7 @@ async function putEmployee(id, nombre, apellido, dni, email, fechaNacimiento, te
     }
 }
 
-async function putEmployeeActivity(id, situacionLaboral) {
+async function putEmployeeActivity(id, situacionLaboral, fechaBaja) {
   
     try {
         const updatedEmployee = await Empleado.findOne({
@@ -49,7 +49,7 @@ async function putEmployeeActivity(id, situacionLaboral) {
           }
         });
 
-        await updatedEmployee.update({situacionLaboral});
+        await updatedEmployee.update({situacionLaboral, fechaBaja});
       
         return updatedEmployee;
     } catch (error) {

@@ -15,7 +15,6 @@ async function postEgreso(idEmpleado, date, idIngreso) {
         let horasMinTrabajadas = `${diff} hs. ${minutes} minutos`;
         let masOchoHoras = diffM > 480 ? true : false
 
-
         const newEgreso = await Egreso.create({
             date: localDate,
             idIngreso,
