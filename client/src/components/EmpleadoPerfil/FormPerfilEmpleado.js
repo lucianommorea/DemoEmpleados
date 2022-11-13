@@ -42,6 +42,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
             ciudad: employee.ciudad,
             fechaAlta: employee ? employee?.fechaAlta?.slice(0,10) : null,
         })
+    // eslint-disable-next-line
     }, [edit])
 
     function validate(input){

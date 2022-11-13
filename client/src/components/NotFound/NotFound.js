@@ -5,7 +5,7 @@ export default function NotFound() {
 
     return (
         <div className={style.back}>
-            404 - NOT FOUND
+            NOT FOUND
         </div>
     )
 }

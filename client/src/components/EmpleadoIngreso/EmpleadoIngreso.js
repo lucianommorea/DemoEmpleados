@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getEgresosByEmployee, getEmployeeId, getIngresoByEmployee, postEgreso, postIngreso } from '../../redux/actions';
+import { cleanEmployee, getEmployeeId, getIngresoByEmployee, postEgreso, postIngreso } from '../../redux/actions';
 import style from './EmpleadoIngreso.module.css';
 import Button from '@mui/material/Button';
 import Swal from 'sweetalert2';
 import IngresosEgresos from './IngresosEgresos';
+import Loading from '../Loading/Loading2';
+import NotFound from '../NotFound/NotFound';
 const moment = require('moment');
 
 
@@ -14,24 +16,24 @@ function EmpleadoIngreso() {
   const dispatch = useDispatch();
   const employee = useSelector(state => state.employee);
   const ingresos = useSelector(state => state.ingresos);
-  const egresos = useSelector(state => state.egresos);
   const { id } = useParams();
   const navigate = useNavigate();
   let [input, setInput] = useState('');
   let [error, setError] = useState('');
   let dateNow = new Date();
+  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getEmployeeId(id));
+    dispatch(getEmployeeId(id, setLoading));
     dispatch(getIngresoByEmployee(id));
-    dispatch(getEgresosByEmployee(id));
   }, [dispatch, id]);
 
   function validate(input) {
     let inputFecha = moment(input, "YYYY-MM-DD HH:mm:ss");
     let error = '';
     if(employee.estado === 'IN' && employee.ingresos[employee.ingresos.length-1].date > input) error = "Egreso no puede ser anterior a Ingreso";
-    else if(employee.estado === 'OUT' && employee.egresos[employee.ingresos.length-1].date > input) error = "Ingreso no puede ser anterior a último Egreso"
+    else if(employee.estado === 'OUT' && employee.egresos.length > 0 && employee.egresos[employee.egresos.length-1].date > input) error = "Ingreso no puede ser anterior a último Egreso"
     else if(inputFecha > dateNow) error = "La fecha es mayor a la actual";
     return error;
   }
@@ -80,7 +82,18 @@ function EmpleadoIngreso() {
     navigate('/')
   }
 
-
+  if(loading){
+    return <Loading />
+  }
+  if(isLoading){
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 300)
+    return <Loading />
+  }
+  if(!employee.id) {
+    return <NotFound />
+  }
   return (
     <div className={style.all}>
       {
@@ -97,7 +110,7 @@ function EmpleadoIngreso() {
         <div className={style.form}>
           <span className={style.name}> {employee.apellido} {employee.nombre} </span>
           <span className={style.legajo}> - Legajo Nº: {employee.id} </span>
-          <label for="ingreso-input" className={style.label}  >
+          <label htmlFor="ingreso-input" className={style.label}  >
             {
               employee.estado === "IN" ?
               <span> - Elegí el horario de egreso:  </span> :
@@ -113,10 +126,10 @@ function EmpleadoIngreso() {
           }
           {
             employee.estado === 'OUT' ?
-            <Button variant="contained" color="success" disabled={!input || error} onClick={toRegister}>
+            <Button variant="contained" color="success" disabled={(!input || error) ? true : false} onClick={toRegister}>
               Registrar Ingreso
             </Button> :
-            <Button variant="contained" color="error" disabled={!input || error} onClick={toRegister}>
+            <Button variant="contained" color="error" disabled={(!input || error) ? true : false} onClick={toRegister}>
               Registrar Egreso
             </Button> 
 

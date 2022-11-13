@@ -1,0 +1,8 @@
+.back{
+    background-color: rgb(238, 238, 238);
+    background-size: cover;
+    display: grid;
+    place-content: center;
+    font-size: xx-large;
+    min-height: 90vh;
+}

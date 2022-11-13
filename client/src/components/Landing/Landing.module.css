@@ -1,5 +1,5 @@
 .all{
-    background-color: #fff;
+    /* background-color: #fff; */
     background-color: rgb(238, 238, 238);
     background-size: cover;
     display: flex;
@@ -23,7 +23,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5vh;
-    background-color: rgb(238, 238, 238);
+    /* background-color: rgb(238, 238, 238); */
     background-color: #fff;
     border-radius: 0.5vw;
 }

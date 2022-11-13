@@ -50,7 +50,7 @@ function TablaEmpleados({width, status}) {
      
         {   employees.map((e) => 
                 employees.length > 0 ?
-                <Link to={`/empleados/${e.id}`} className={style.toUser}>
+                <Link to={`/empleados/${e.id}`} className={style.toUser} key={e.id}>
                     <div className={`row align-items-start ${style.info}`} key={e.id}>
                     {
                         width > 1100 ?

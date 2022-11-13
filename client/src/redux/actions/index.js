@@ -46,10 +46,11 @@ export const getEmployeeIdSearch = (id) => async (dispatch) => {
   }
 };
 
-export const getEmployeeId = (id) => async (dispatch) => {
+export const getEmployeeId = (id, setLoading) => async (dispatch) => {
   try {
     const { data } = await api.getEmployeeId(id);
     dispatch({ type: GET_EMPLOYEE_ID, payload: data });
+    setLoading && setLoading(false);
   } catch (error) {
     console.log(error.message);
   }
