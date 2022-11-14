@@ -15,7 +15,6 @@ router.post('/', async function (req, res){
         var fecha1 = moment(ingresoS.date, "YYYY-MM-DD HH:mm:ss");
         var fecha2 = moment(date, "YYYY-MM-DD HH:mm:ss");
 
-
         if (!idEmpleado || !date || !idIngreso) {
             res.status(404).send({error: "No se recibieron los parámetros necesarios para registrar Egreso"});
         }

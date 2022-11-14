@@ -10,7 +10,6 @@ function TablaEgresos({width}) {
 
     let employees = useSelector(state => state.employees);
 
-
     return (
         <>
         <div className={`row align-items-start ${style.topT}`}>

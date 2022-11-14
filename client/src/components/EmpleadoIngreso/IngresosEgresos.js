@@ -3,6 +3,8 @@ import style from './IngresosEgresos.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deleteIngreso } from '../../redux/actions/index';
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 
 function IngresosEgresos({id, ingreso1, egreso1, horasTrans, masOchoHoras, setIsDeleted}) {
@@ -23,6 +25,24 @@ function IngresosEgresos({id, ingreso1, egreso1, horasTrans, masOchoHoras, setIs
         dispatch(deleteIngreso(id, setIsDeleted));
     }
 
+    const confirmChange = (e) => {
+        confirmAlert({
+          title: "¿Está seguro?",
+          message:  egreso1 ? 
+                    "Eliminará tanto el Ingreso como el Egreso asociado en caso de confirmar" :
+                    "Eliminará el Ingreso en caso de confirmar",
+          buttons: [
+            {
+              label: "Sí",
+              onClick: () => deleteIngresos(e),
+            },
+            {
+              label: "No",
+            },
+          ],
+        });
+      };
+
     return (
         <div className={style.all}>
             <div className={style.hora}>
@@ -35,7 +55,7 @@ function IngresosEgresos({id, ingreso1, egreso1, horasTrans, masOchoHoras, setIs
                 {horasTrans}
             </div>
             <div className={style.delete}>
-                <DeleteIcon className={style.deleteIcon} fontSize={width > 800 ? 'medium' : 'small'} onClick={deleteIngresos} />
+                <DeleteIcon className={style.deleteIcon} fontSize={width > 800 ? 'medium' : 'small'} onClick={confirmChange} />
             </div>
         </div>
     )

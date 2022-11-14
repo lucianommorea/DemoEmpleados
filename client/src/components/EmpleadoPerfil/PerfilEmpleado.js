@@ -52,7 +52,8 @@ function PerfilEmpleado() {
         <div>
           <FormPerfilEmpleado nombre={employee.nombre} apellido={employee.apellido} dni={employee.dni} email={employee.email}
                               fechaNacimiento={employee.fechaNacimiento} telefono={employee.telefono} domicilio={employee.domicilio}
-                              ciudad={employee.ciudad} fechaAlta={employee.fechaAlta} fechaBaja={employee.fechaBaja} edit={edit} setEdit={setEdit} />
+                              ciudad={employee.ciudad} fechaAlta={employee.fechaAlta} fechaBaja={employee.fechaBaja} edit={edit} setEdit={setEdit} 
+          />
         </div>
         
       </div>
@@ -86,7 +87,8 @@ function PerfilEmpleado() {
                                 egreso1={e.egreso ? e.egreso.date : null} 
                                 horasTrans={e.horasMinTrabajadas}
                                 masOchoHoras={e.masOchoHoras}
-                                setIsDeleted={setIsDeleted}/> 
+                                setIsDeleted={setIsDeleted}
+              /> 
 
               )
             }

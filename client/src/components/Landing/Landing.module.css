@@ -1,5 +1,4 @@
 .all{
-    /* background-color: #fff; */
     background-color: rgb(238, 238, 238);
     background-size: cover;
     display: flex;
@@ -8,7 +7,6 @@
 }
 
 .top{
-    /* border: 1px solid black; */
     text-align: center;
     margin-top: 4vh;
     margin-bottom: 3.5vh;
@@ -23,7 +21,6 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5vh;
-    /* background-color: rgb(238, 238, 238); */
     background-color: #fff;
     border-radius: 0.5vw;
 }
@@ -46,7 +43,6 @@
     font-size: large;
     text-align: center;
     font-weight: 400;
-    /* color: gray; */
 }
 
 .tablaEmployees{

@@ -47,6 +47,7 @@ async function getAllIngresos() {
             include: [Empleado, Egreso],
             order: [ ["id", "DESC" ] ],
         });
+
         return ingresos;
     }
     catch(error) {
@@ -63,6 +64,7 @@ async function getAllIngresosByEmployee(idEmpleado) {
             include: [Empleado, Egreso],
             order: [ ["id", "DESC" ] ],
          });
+         
          return ingresosByEmployee;
      }
      catch(error) {

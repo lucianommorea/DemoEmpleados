@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { cleanEmployee, getEmployeeId, getIngresoByEmployee, postEgreso, postIngreso } from '../../redux/actions';
+import { getEmployeeId, getIngresoByEmployee, postEgreso, postIngreso } from '../../redux/actions';
 import style from './EmpleadoIngreso.module.css';
 import Button from '@mui/material/Button';
 import Swal from 'sweetalert2';
@@ -39,7 +39,8 @@ function EmpleadoIngreso() {
   function validate(input) {
     let inputFecha = moment(input, "YYYY-MM-DD HH:mm:ss");
     let error = '';
-    if(employee.estado === 'IN' && employee.ingresos[employee.ingresos.length-1].date > input) error = "Egreso no puede ser anterior a Ingreso";
+    if(employee.estado === 'OUT' && employee.fechaAlta > input) error = "Ingreso no puede ser anterior a Fecha de Alta";
+    else if(employee.estado === 'IN' && employee.ingresos[employee.ingresos.length-1].date > input) error = "Egreso no puede ser anterior a Ingreso";
     else if(employee.estado === 'OUT' && employee.egresos.length > 0 && employee.egresos[employee.egresos.length-1].date > input) error = "Ingreso no puede ser anterior a último Egreso"
     else if(inputFecha > dateNow) error = "La fecha es mayor a la actual";
     return error;
@@ -86,7 +87,7 @@ function EmpleadoIngreso() {
       }
 
     }
-    navigate('/')
+    navigate('/');
   }
 
   if(loading){
@@ -128,9 +129,11 @@ function EmpleadoIngreso() {
           <input type="datetime-local" id='ingreso-input' onChange={handlerInput}
                   className={error ? style.errorInput : style.inputTime} min="2021-01-01T00:00" max={dateNow.toString()} 
           />
+
           {
             error && <span className={style.error}> {error} </span>
           }
+
           {
             employee.estado === 'OUT' ?
             <Button variant="contained" color="success" disabled={(!input || error) ? true : false} onClick={toRegister}>
@@ -139,9 +142,8 @@ function EmpleadoIngreso() {
             <Button variant="contained" color="error" disabled={(!input || error) ? true : false} onClick={toRegister}>
               Registrar Egreso
             </Button> 
-
-
           }
+          
         </div>    
       </div>
       <div className={style.historial}>

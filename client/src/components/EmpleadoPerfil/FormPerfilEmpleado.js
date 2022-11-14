@@ -28,7 +28,6 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
         ciudad: ciudad,
         fechaAlta: fechaAlta,
     })
-    // let [edit, setEdit] = useState(false)
 
     useEffect(()=> {
         setInput({
@@ -113,7 +112,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
             return
         }
         await dispatch(putEmployeeInfo(employee.id, input));
-        setEdit(!edit)
+        setEdit(!edit);
         Swal.fire(
             ' EMPLEADO MODIFICADO CON EXITO ', `Se han modificado los datos de ${input.nombre} ${input.apellido}.`, 'success'
         )
@@ -121,7 +120,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
     }
 
     function changeEdit(){
-        setEdit(!edit)
+        setEdit(!edit);
     }
 
     const bajaAltaEmpleado = (e) => {
@@ -129,7 +128,7 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
         if(employee.situacionLaboral === 'ACTIVO') {
             if(employee.estado === "IN") {
               Swal.fire(
-                ' ERROR ', `${input.nombre} ${input.apellido} está en la Empresa. Registra un Egreso primero.`, 'error'
+                ' ERROR ', `${input.nombre} ${input.apellido} está en la Empresa. Debes registrar un Egreso en primer término.`, 'error'
               )
             }
             else{
@@ -145,8 +144,8 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
     
       const confirmChange = (e) => {
         confirmAlert({
-          title: `Dar de Baja a ${employee.nombre} ${employee.apellido}`,
-          message: "¿Está seguro?",
+          title: "¿Está seguro?",
+          message: `Se dará de Baja a ${employee.nombre} ${employee.apellido} en caso de continuar.`,
           buttons: [
             {
               label: "Sí",
@@ -161,8 +160,8 @@ function FormPerfilEmpleado({nombre, apellido, dni, email, fechaNacimiento, tele
 
       const confirmChange2 = (e) => {
         confirmAlert({
-          title: `Dar de alta a ${employee.nombre} ${employee.apellido}`,
-          message: "¿Está seguro?",
+          title: "¿Está seguro?",
+          message: `Se dará de Alta a ${employee.nombre} ${employee.apellido} en caso de continuar.`,
           buttons: [
             {
               label: "Sí",

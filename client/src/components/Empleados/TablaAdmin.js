@@ -10,7 +10,7 @@ function TablaAdmin({width}) {
 
     let employees = useSelector(state => state.employees);
     const navigate = useNavigate()
-
+    
 
     return (
         <>

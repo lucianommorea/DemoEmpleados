@@ -1,5 +1,4 @@
 .all{
-    /* background-color: #fff; */
     background-color: rgb(238, 238, 238);
     background-size: cover;
     display: flex;
@@ -8,7 +7,6 @@
 }
 
 .top{
-    /* border: 1px solid black; */
     text-align: center;
     margin-top: 4vh;
     margin-bottom: 3.5vh;

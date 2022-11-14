@@ -61,7 +61,6 @@ async function putEgreso(id, date, idIngreso) {
 
         await updatedEgreso.update({date, horasTrabajadas: diff});
         
-      
         return updatedEgreso;
     } catch (error) {
         console.log('Error putEgreso', error);
@@ -75,6 +74,7 @@ async function getAllEgresos() {
             include: [Empleado, Ingreso],
             order: [ ["id", "DESC" ] ],
         });
+
         return egresos;
     }
     catch(error) {
@@ -91,6 +91,7 @@ async function getAllEgresosByEmployee(idEmpleado) {
             include: [Empleado, Ingreso],
             order: [ ["id", "DESC" ] ],
          });
+
          return egresosByEmployee;
      }
      catch(error) {

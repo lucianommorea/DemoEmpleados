@@ -131,7 +131,8 @@ function FormEmpleado() {
                                 name='nombre' 
                                 autoComplete='off'
                                 onChange={handleChange}
-                                className={errors.nombre ? style.errorInput : style.input1} />      
+                                className={errors.nombre ? style.errorInput : style.input1} 
+                        />      
   
                         {   
                             errors.nombre && (
@@ -150,7 +151,8 @@ function FormEmpleado() {
                                 name='apellido' 
                                 autoComplete='off'
                                 onChange={handleChange}
-                                className={errors.apellido ? style.errorInput : style.input1} />
+                                className={errors.apellido ? style.errorInput : style.input1} 
+                        />
 
                         {   
                             errors.apellido && (

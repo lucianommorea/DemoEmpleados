@@ -33,12 +33,15 @@ function Landing() {
 
   return (
     <div className={style.all}>
+
       <div className={style.top}>
         <h1 className={style.title}> Registro Empleados </h1>
       </div>
+
       <div className={style.down}>
         <div className={style.employees}>
           <div className={style.check}>
+
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="IN" onChange={handleCheck} defaultChecked />
               <label className={`form-check-label ${style.label}`} htmlFor="inlineRadio1">Empleados en la Empresa</label>
@@ -47,6 +50,7 @@ function Landing() {
               <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="OUT" onChange={handleCheck} />
               <label className={`form-check-label ${style.label}`} htmlFor="inlineRadio2">Empleados fuera de la Empresa</label>
             </div>
+            
           </div>
 
 

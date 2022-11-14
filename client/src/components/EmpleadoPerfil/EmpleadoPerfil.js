@@ -66,6 +66,7 @@ function EmpleadoPerfil({nombre, apellido, dni, fechaNacimiento, email, telefono
                 <button className={style.btn1} onClick={changeEdit}>
                         Modificar Empleado
                 </button>  
+
                 {
                     employee.situacionLaboral === 'ACTIVO' ?
                     <button className={style.btn2} onClick={confirmChange}>
@@ -75,6 +76,7 @@ function EmpleadoPerfil({nombre, apellido, dni, fechaNacimiento, email, telefono
                         Dar de Alta
                     </button>                            
                 }  
+                
             </div>
 
         </div>    

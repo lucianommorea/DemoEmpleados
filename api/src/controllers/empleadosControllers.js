@@ -65,7 +65,8 @@ async function getAllEmployees() {
         let employees = await Empleado.findAll({
             include: [Ingreso, Egreso],
             order: ["id"],
-        })
+        });
+
         return employees
     }
     catch(error) {
@@ -81,9 +82,9 @@ async function getEmployeeById(id) {
                 id: id
             },
             include: [Ingreso, Egreso],      
-        }) 
+        });
 
-        return employeeId
+        return employeeId;
     } catch (error) {
             console.log('Error in getEmployeeById', error)
     }
@@ -96,9 +97,9 @@ async function getEmployeeByIdSearch(id) {
                 id: id
             },
             include: [Ingreso, Egreso],      
-        }) 
+        });
 
-        return employeeId
+        return employeeId;
     } catch (error) {
             console.log('Error in getEmployeeByIdSearch', error)
     }
@@ -112,9 +113,9 @@ async function getEmployeesByStatus(status) {
             },
             include: [Ingreso, Egreso],
             order: ["id"],      
-        }) 
+        });
 
-        return employeesByStatus
+        return employeesByStatus;
     } catch (error) {
             console.log('Error in getEmployeesByStatus', error)
     }
@@ -128,9 +129,9 @@ async function getEmployeesByName(apellido) {
                     [Op.iLike]: `%${apellido}%`
                 }
             }   
-        }) 
+        });
 
-        return employeesByName
+        return employeesByName;
     } catch (error) {
             console.log('Error in getEmployeesByStatus', error)
     }
@@ -144,8 +145,9 @@ async function getAllActiveEmployees() {
             },
             include: [Ingreso, Egreso],
             order: ["id"],
-         })
-         return employees
+         });
+
+         return employees;
     }
     catch(error) {
          console.log('Error in getAllActiveEmployees', error)
@@ -160,9 +162,9 @@ async function getActiveEmployeeByIdSearch(id) {
                 situacionLaboral: 'ACTIVO'
             },
             include: [Ingreso, Egreso],      
-        }) 
+        });
 
-        return employeeId
+        return employeeId;
     } catch (error) {
             console.log('Error in getActiveEmployeeByIdSearch', error)
     }
@@ -177,9 +179,9 @@ async function getActiveEmployeesByName(apellido) {
                 },
                 situacionLaboral: 'ACTIVO'
             }   
-        }) 
+        }); 
 
-        return employeesByName
+        return employeesByName;
     } catch (error) {
             console.log('Error in getActiveEmployeesByName', error)
     }
@@ -194,9 +196,9 @@ async function getActiveEmployeesByStatus(status) {
             },
             include: [Ingreso, Egreso],
             order: ["id"],      
-        }) 
+        }); 
 
-        return employeesByStatus
+        return employeesByStatus;
     } catch (error) {
             console.log('Error in getActiveEmployeesByStatus', error)
     }
@@ -210,8 +212,9 @@ async function getAllInactiveEmployees() {
             },
             include: [Ingreso, Egreso],
             order: ["id"],
-         })
-         return employees
+         });
+
+         return employees;
     }
     catch(error) {
          console.log('Error in getAllInactiveEmployees', error)
@@ -226,9 +229,9 @@ async function getInactiveEmployeeByIdSearch(id) {
                 situacionLaboral: 'INACTIVO'
             },
             include: [Ingreso, Egreso],      
-        }) 
+        }); 
 
-        return employeeId
+        return employeeId;
     } catch (error) {
             console.log('Error in getInactiveEmployeeByIdSearch', error)
     }
@@ -243,9 +246,9 @@ async function getInactiveEmployeesByName(apellido) {
                 },
                 situacionLaboral: 'INACTIVO'
             }   
-        }) 
+        }); 
 
-        return employeesByName
+        return employeesByName;
     } catch (error) {
             console.log('Error in getInactiveEmployeesByName', error)
     }

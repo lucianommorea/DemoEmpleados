@@ -5,7 +5,6 @@ import FormEmpleado from './FormEmpleado';
 
 function CrearEmpleado() {
 
-
   return (
     <div className={style.all}>
       <div className={style.top}>
