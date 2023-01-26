@@ -1,0 +1,69 @@
+{
+    "id": 4,
+    "nombre": "Micaela",
+    "apellido": "Lapuente",
+    "dni": 38831617,
+    "email": "mica-mdq@gmail.com",
+    "fechaNacimiento": "1995-09-17T03:00:00.000Z",
+    "telefono": "65686",
+    "situacionLaboral": "ACTIVO",
+    "domicilio": "Rondeau 546",
+    "ciudad": "Mar del Plata",
+    "fechaAlta": "2021-06-11T03:00:00.000Z",
+    "fechaBaja": null,
+    "estado": "OUT",
+    "createdAt": "2022-11-14T17:17:06.732Z",
+    "updatedAt": "2022-11-14T17:21:43.906Z",
+    "ingresos": [
+      {
+        "id": 10,
+        "date": "2022-11-02T09:02:00.000Z",
+        "isIn": "OUT",
+        "idEgreso": 9,
+        "horasTrabajadas": 7,
+        "horasMinTrabajadas": "7 hs. 22 minutos",
+        "masOchoHoras": false,
+        "createdAt": "2022-11-14T17:21:31.597Z",
+        "updatedAt": "2022-11-14T17:21:43.904Z",
+        "empleadoId": 4
+      },
+      {
+        "id": 9,
+        "date": "2022-11-01T08:58:00.000Z",
+        "isIn": "OUT",
+        "idEgreso": 8,
+        "horasTrabajadas": 8,
+        "horasMinTrabajadas": "8 hs. 14 minutos",
+        "masOchoHoras": true,
+        "createdAt": "2022-11-14T17:20:51.122Z",
+        "updatedAt": "2022-11-14T17:21:08.049Z",
+        "empleadoId": 4
+      }
+    ],
+    "egresos": [
+      {
+        "id": 9,
+        "date": "2022-11-02T16:24:00.000Z",
+        "idIngreso": 10,
+        "horasTrabajadas": 7,
+        "horasMinTrabajadas": "7 hs. 22 minutos",
+        "masOchoHoras": false,
+        "createdAt": "2022-11-14T17:21:43.887Z",
+        "updatedAt": "2022-11-14T17:21:43.908Z",
+        "empleadoId": 4,
+        "ingresoId": 10
+      },
+      {
+        "id": 8,
+        "date": "2022-11-01T17:12:00.000Z",
+        "idIngreso": 9,
+        "horasTrabajadas": 8,
+        "horasMinTrabajadas": "8 hs. 14 minutos",
+        "masOchoHoras": true,
+        "createdAt": "2022-11-14T17:21:08.032Z",
+        "updatedAt": "2022-11-14T17:21:08.052Z",
+        "empleadoId": 4,
+        "ingresoId": 9
+      }
+    ]
+  }

@@ -7,7 +7,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 
-function IngresosEgresos({id, ingreso1, egreso1, horasTrans, masOchoHoras, setIsDeleted}) {
+function IngresosEgresos({id, ingreso1, egreso1, horasTrans, masOchoHoras, setIsDeleted, input, setInput, error, setError}) {
 
     const [width, setWidth] = useState(window.innerWidth);
     const dispatch = useDispatch();
@@ -23,6 +23,8 @@ function IngresosEgresos({id, ingreso1, egreso1, horasTrans, masOchoHoras, setIs
 
     function deleteIngresos(e){
         dispatch(deleteIngreso(id, setIsDeleted));
+        error && setInput('');
+        error && setError('');
     }
 
     const confirmChange = (e) => {

@@ -1,0 +1,165 @@
+[
+    {
+      "id": 2,
+      "nombre": "Martin",
+      "apellido": "Gomez",
+      "dni": 45589559,
+      "email": "martingomez@gmail.com",
+      "fechaNacimiento": "1998-09-09T03:00:00.000Z",
+      "telefono": "333",
+      "situacionLaboral": "ACTIVO",
+      "domicilio": "Piedras 123",
+      "ciudad": "La Plata",
+      "fechaAlta": "2021-02-08T03:00:00.000Z",
+      "fechaBaja": null,
+      "estado": "IN",
+      "createdAt": "2022-11-14T17:17:06.732Z",
+      "updatedAt": "2022-12-26T00:03:54.100Z",
+      "ingresos": [
+        {
+          "id": 14,
+          "date": "2022-12-25T21:03:00.000Z",
+          "isIn": "IN",
+          "idEgreso": null,
+          "horasTrabajadas": null,
+          "horasMinTrabajadas": null,
+          "masOchoHoras": null,
+          "createdAt": "2022-12-26T00:03:54.093Z",
+          "updatedAt": "2022-12-26T00:03:54.101Z",
+          "empleadoId": 2
+        },
+        {
+          "id": 13,
+          "date": "2022-11-09T16:10:00.000Z",
+          "isIn": "OUT",
+          "idEgreso": 12,
+          "horasTrabajadas": 988,
+          "horasMinTrabajadas": "988 hs. 53 minutos",
+          "masOchoHoras": true,
+          "createdAt": "2022-11-14T19:10:50.015Z",
+          "updatedAt": "2022-12-26T00:03:31.812Z",
+          "empleadoId": 2
+        },
+        {
+          "id": 12,
+          "date": "2022-11-03T16:09:00.000Z",
+          "isIn": "OUT",
+          "idEgreso": 11,
+          "horasTrabajadas": 2,
+          "horasMinTrabajadas": "2 hs. 0 minutos",
+          "masOchoHoras": false,
+          "createdAt": "2022-11-14T19:09:36.235Z",
+          "updatedAt": "2022-11-14T19:09:41.698Z",
+          "empleadoId": 2
+        },
+        {
+          "id": 6,
+          "date": "2022-11-02T10:04:00.000Z",
+          "isIn": "OUT",
+          "idEgreso": 10,
+          "horasTrabajadas": 12,
+          "horasMinTrabajadas": "12 hs. 5 minutos",
+          "masOchoHoras": true,
+          "createdAt": "2022-11-14T17:19:39.510Z",
+          "updatedAt": "2022-11-14T19:09:24.583Z",
+          "empleadoId": 2
+        },
+        {
+          "id": 5,
+          "date": "2022-11-01T10:03:00.000Z",
+          "isIn": "OUT",
+          "idEgreso": 5,
+          "horasTrabajadas": 7,
+          "horasMinTrabajadas": "7 hs. 21 minutos",
+          "masOchoHoras": false,
+          "createdAt": "2022-11-14T17:19:18.284Z",
+          "updatedAt": "2022-11-14T17:19:24.296Z",
+          "empleadoId": 2
+        }
+      ],
+      "egresos": [
+        {
+          "id": 5,
+          "date": "2022-11-01T17:24:00.000Z",
+          "idIngreso": 5,
+          "horasTrabajadas": 7,
+          "horasMinTrabajadas": "7 hs. 21 minutos",
+          "masOchoHoras": false,
+          "createdAt": "2022-11-14T17:19:24.291Z",
+          "updatedAt": "2022-11-14T17:19:24.301Z",
+          "empleadoId": 2,
+          "ingresoId": 5
+        },
+        {
+          "id": 10,
+          "date": "2022-11-02T22:09:00.000Z",
+          "idIngreso": 6,
+          "horasTrabajadas": 12,
+          "horasMinTrabajadas": "12 hs. 5 minutos",
+          "masOchoHoras": true,
+          "createdAt": "2022-11-14T19:09:24.580Z",
+          "updatedAt": "2022-11-14T19:09:24.587Z",
+          "empleadoId": 2,
+          "ingresoId": 6
+        },
+        {
+          "id": 11,
+          "date": "2022-11-03T18:09:00.000Z",
+          "idIngreso": 12,
+          "horasTrabajadas": 2,
+          "horasMinTrabajadas": "2 hs. 0 minutos",
+          "masOchoHoras": false,
+          "createdAt": "2022-11-14T19:09:41.681Z",
+          "updatedAt": "2022-11-14T19:09:41.702Z",
+          "empleadoId": 2,
+          "ingresoId": 12
+        },
+        {
+          "id": 12,
+          "date": "2022-12-20T21:03:00.000Z",
+          "idIngreso": 13,
+          "horasTrabajadas": 988,
+          "horasMinTrabajadas": "988 hs. 53 minutos",
+          "masOchoHoras": true,
+          "createdAt": "2022-12-26T00:03:31.760Z",
+          "updatedAt": "2022-12-26T00:03:31.826Z",
+          "empleadoId": 2,
+          "ingresoId": 13
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Lourdes",
+      "apellido": "Sierra",
+      "dni": 40524654,
+      "email": "lourdessierra@gmail.com",
+      "fechaNacimiento": "1999-05-02T03:00:00.000Z",
+      "telefono": "65686",
+      "situacionLaboral": "ACTIVO",
+      "domicilio": "Belgrano 546",
+      "ciudad": "Mar del Plata",
+      "fechaAlta": "2022-01-01T03:00:00.000Z",
+      "fechaBaja": null,
+      "estado": "IN",
+      "createdAt": "2022-11-14T17:17:06.732Z",
+      "updatedAt": "2022-11-14T17:22:05.109Z",
+      "ingresos": [
+        {
+          "id": 11,
+          "date": "2022-11-01T10:58:00.000Z",
+          "isIn": "IN",
+          "idEgreso": null,
+          "horasTrabajadas": null,
+          "horasMinTrabajadas": null,
+          "masOchoHoras": null,
+          "createdAt": "2022-11-14T17:22:05.104Z",
+          "updatedAt": "2022-11-14T17:22:05.110Z",
+          "empleadoId": 5
+        }
+      ],
+      "egresos": [
+        
+      ]
+    }
+  ]

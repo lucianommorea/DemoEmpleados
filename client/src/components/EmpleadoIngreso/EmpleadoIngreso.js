@@ -17,7 +17,7 @@ function EmpleadoIngreso() {
   const employee = useSelector(state => state.employee);
   const ingresos = useSelector(state => state.ingresos);
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   let [input, setInput] = useState('');
   let [error, setError] = useState('');
   let dateNow = new Date();
@@ -87,7 +87,9 @@ function EmpleadoIngreso() {
       }
 
     }
-    navigate('/');
+    setIsDeleted((prevIsDeleted) => !prevIsDeleted);
+    setInput('')
+    // navigate('/');
   }
 
   if(loading){
@@ -99,7 +101,7 @@ function EmpleadoIngreso() {
     }, 300)
     return <Loading />
   }
-  if(!employee.id) {
+  if(!employee.id || employee.situacionLaboral === "INACTIVO") {
     return <NotFound />
   }
   return (
@@ -126,7 +128,7 @@ function EmpleadoIngreso() {
             }
 
           </label>
-          <input type="datetime-local" id='ingreso-input' onChange={handlerInput}
+          <input type="datetime-local" id='ingreso-input' data-testid='inputHor' onChange={handlerInput} value={input}
                   className={error ? style.errorInput : style.inputTime} min="2021-01-01T00:00" max={dateNow.toString()} 
           />
 
@@ -173,7 +175,11 @@ function EmpleadoIngreso() {
                             egreso1={e.egreso ? e.egreso.date : null} 
                             horasTrans={e.horasMinTrabajadas}
                             masOchoHoras={e.masOchoHoras}
-                            setIsDeleted={setIsDeleted} /> 
+                            setIsDeleted={setIsDeleted}
+                            input={input}
+                            setInput={setInput}
+                            error={error}
+                            setError={setError} /> 
 
           )
         }

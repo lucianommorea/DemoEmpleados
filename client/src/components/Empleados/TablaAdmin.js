@@ -40,8 +40,8 @@ function TablaAdmin({width}) {
                         <p className={`col-1 ${style.tableDown}`}>{e.id}</p> 
                         {
                             e.estado === 'IN' ?
-                            <p className={`col-2 ${style.tableDown}`}> <CheckCircleRoundedIcon color='success' /> </p> :
-                            <p className={`col-2 ${style.tableDown}`}> <RemoveCircleRoundedIcon color='error' /> </p>
+                            <p className={`col-2 ${style.tableDown}`}> <CheckCircleRoundedIcon data-testid='check' color='success' /> </p> :
+                            <p className={`col-2 ${style.tableDown}`}> <RemoveCircleRoundedIcon data-testid='remove' color='error' /> </p>
                         } 
 
                         <p className={`col-1 ${style.tableDown}`}> 
@@ -53,7 +53,7 @@ function TablaAdmin({width}) {
                         </p> 
 
                         <p className={`col-2 ${style.tableDown}`}> 
-                            <AddCircleOutlineRoundedIcon className={style.edit} onClick={() => navigate(`/empleados/perfil/${e.id}`)} /> 
+                            <AddCircleOutlineRoundedIcon  data-testid='edit-employee' className={style.edit} onClick={() => navigate(`/empleados/perfil/${e.id}`)} /> 
                         </p> 
 
                     </div> 

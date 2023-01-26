@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { cleanEmployees, getActiveEmployeeStatus } from '../../redux/actions';
+import { getActiveEmployeeStatus } from '../../redux/actions';
 import style from './Landing.module.css';
 import TablaEmpleados from './TablaEmpleados';
 
@@ -24,7 +24,7 @@ function Landing() {
 
   useEffect(() => {
     dispatch(getActiveEmployeeStatus(status));
-    return () => dispatch(cleanEmployees())
+    // return () => dispatch(cleanEmployees())
   }, [dispatch, status]);
 
   function handleCheck(e){
@@ -55,7 +55,7 @@ function Landing() {
 
 
           <div className={style.tableEmployees}>
-            <TablaEmpleados width={width} status={status} />  
+            <TablaEmpleados width={width} status={status}/>  
           </div>
 
           <div className={style.total}>

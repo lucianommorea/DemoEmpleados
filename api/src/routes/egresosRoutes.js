@@ -34,8 +34,10 @@ router.post('/', async function (req, res){
             res.status(404).send({error: "El horario de egreso no puede ser menor al de ingreso"});
         }
         else{
-            let newEgreso = await postEgreso(idEmpleado, date, idIngreso);
-            res.status(200).send(newEgreso);
+            // let newEgreso = await postEgreso(idEmpleado, date, idIngreso);
+            // res.status(200).send(newEgreso);
+            await postEgreso(idEmpleado, date, idIngreso);
+            res.status(200).send({success: true});
         }
     } 
     catch (error) {

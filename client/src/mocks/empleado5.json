@@ -1,0 +1,34 @@
+{
+    "id": 5,
+    "nombre": "Lourdes",
+    "apellido": "Sierra",
+    "dni": 40524654,
+    "email": "lourdessierra@gmail.com",
+    "fechaNacimiento": "1999-05-02T03:00:00.000Z",
+    "telefono": "65686",
+    "situacionLaboral": "ACTIVO",
+    "domicilio": "Belgrano 546",
+    "ciudad": "Mar del Plata",
+    "fechaAlta": "2022-01-01T03:00:00.000Z",
+    "fechaBaja": null,
+    "estado": "IN",
+    "createdAt": "2022-11-14T17:17:06.732Z",
+    "updatedAt": "2022-11-14T17:22:05.109Z",
+    "ingresos": [
+      {
+        "id": 11,
+        "date": "2022-11-01T10:58:00.000Z",
+        "isIn": "IN",
+        "idEgreso": null,
+        "horasTrabajadas": null,
+        "horasMinTrabajadas": null,
+        "masOchoHoras": null,
+        "createdAt": "2022-11-14T17:22:05.104Z",
+        "updatedAt": "2022-11-14T17:22:05.110Z",
+        "empleadoId": 5
+      }
+    ],
+    "egresos": [
+      
+    ]
+  }

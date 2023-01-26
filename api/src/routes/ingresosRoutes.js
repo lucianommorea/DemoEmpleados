@@ -20,8 +20,10 @@ router.post('/', async function (req, res){
             res.status(404).send({error: "El empleado ya está en la empresa. No se puede registrar un nuevo Ingreso"});
         }
         else {
-            let newIngreso = await postIngreso(idEmpleado, date);
-            res.status(200).send(newIngreso);
+            // let newIngreso = await postIngreso(idEmpleado, date);
+            // res.status(200).send(newIngreso);
+            await postIngreso(idEmpleado, date);
+            res.status(200).send({success: true});
         }
     } 
     catch (error) {

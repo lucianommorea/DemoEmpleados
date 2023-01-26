@@ -81,7 +81,7 @@ function FormEmpleado() {
     }
 
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
         if(!input.nombre || !input.apellido || !input.dni || !input.email || !input.fechaNacimiento || !input.telefono || !input.domicilio || !input.ciudad || !input.fechaAlta) setErrors(validate2({
             nombre: input.nombre,
@@ -102,7 +102,7 @@ function FormEmpleado() {
             )
             return
         }
-        dispatch(postEmployee(input));
+        await dispatch(postEmployee(input));
         Swal.fire(
             ' ALTA EMPLEADO ', `Se ha dado de Alta a ${input.nombre} ${input.apellido}`, 'success'
         )
@@ -117,7 +117,7 @@ function FormEmpleado() {
             ciudad: '',
             fechaAlta: null
         })
-        navigate('/')
+        navigate('/empleados')
     }
     
 
@@ -125,10 +125,11 @@ function FormEmpleado() {
         <div className={style.all}>
                 <form className={style.form} onSubmit={handleSubmit}>
                     <div className={style.div1}>
-                        <label className={style.label1}> Nombre: </label>
+                        <label className={style.label1} htmlFor='nombre'> Nombre: </label>
                         <input  type='text'
                                 value={input.nombre || ""} 
                                 name='nombre' 
+                                id='nombre'
                                 autoComplete='off'
                                 onChange={handleChange}
                                 className={errors.nombre ? style.errorInput : style.input1} 
@@ -145,10 +146,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Apellido: </label>
+                        <label className={style.label1} htmlFor='apellido'> Apellido: </label>
                         <input  type='text'
                                 value={input.apellido || ""} 
-                                name='apellido' 
+                                name='apellido'
+                                id='apellido' 
                                 autoComplete='off'
                                 onChange={handleChange}
                                 className={errors.apellido ? style.errorInput : style.input1} 
@@ -165,10 +167,11 @@ function FormEmpleado() {
                     </div>
                     
                     <div className={style.div1}>
-                        <label className={style.label1}> DNI: </label>
+                        <label className={style.label1} htmlFor='dni'> DNI: </label>
                         <input  type='number' 
                                 value={input.dni || ""} 
                                 name='dni' 
+                                id='dni'
                                 autoComplete='off'
                                 min= '0'
                                 step= '1'
@@ -185,10 +188,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Fecha de nacimiento: </label>
+                        <label className={style.label1} htmlFor='fechaNacimiento'> Fecha de nacimiento: </label>
                         <input  type='date' 
                                 value={input.fechaNacimiento || ""} 
                                 name='fechaNacimiento' 
+                                id='fechaNacimiento'
                                 min="1930-01-01"
                                 max="2023-12-12"
                                 autoComplete='off'
@@ -205,10 +209,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Email: </label>
+                        <label className={style.label1} htmlFor='email'> Email: </label>
                         <input  type='text' 
                                 value={input.email || ""} 
                                 name='email' 
+                                id='email'
                                 autoComplete='off'
                                 onChange={handleChange}
                                 className={errors.email ? style.errorInput : style.input1}
@@ -223,10 +228,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Telefono: </label>
+                        <label className={style.label1} htmlFor='telefono'> Telefono: </label>
                         <input  type='text' 
                                 value={input.telefono || ""} 
                                 name='telefono' 
+                                id='telefono'
                                 autoComplete='off'
                                 onChange={handleChange}
                                 className={errors.telefono ? style.errorInput : style.input1}
@@ -241,10 +247,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Domicilio: </label>
+                        <label className={style.label1} htmlFor='domicilio'> Domicilio: </label>
                         <input  type='text' 
                                 value={input.domicilio || ""} 
                                 name='domicilio' 
+                                id='domicilio'
                                 autoComplete='off'
                                 onChange={handleChange}
                                 className={errors.domicilio ? style.errorInput : style.input1}
@@ -259,10 +266,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Ciudad: </label>
+                        <label className={style.label1} htmlFor='ciudad'> Ciudad: </label>
                         <input  type='text' 
                                 value={input.ciudad || ""} 
                                 name='ciudad' 
+                                id='ciudad'
                                 autoComplete='off'
                                 onChange={handleChange}
                                 className={errors.ciudad ? style.errorInput : style.input1}
@@ -277,10 +285,11 @@ function FormEmpleado() {
                     </div>
 
                     <div className={style.div1}>
-                        <label className={style.label1}> Fecha Alta: </label>
+                        <label className={style.label1} htmlFor='fechaAlta'> Fecha Alta: </label>
                         <input  type='date' 
                                 value={input.fechaAlta || ""} 
                                 name='fechaAlta' 
+                                id='fechaAlta'
                                 min="2010-01-01"
                                 max="2030-01-01"
                                 autoComplete='off'

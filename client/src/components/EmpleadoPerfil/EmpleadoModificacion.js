@@ -8,7 +8,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
     return (
         <form className={style.form} onSubmit={handleSubmit}>
             <div className={style.div1}>
-                <label className={style.label1}> Nombre: </label>
+                <label className={style.label1} htmlFor='nombre'> Nombre: </label>
                 <input  type='text'
                         value={input.nombre || ""} 
                         name='nombre' 
@@ -25,7 +25,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Apellido: </label>
+                <label className={style.label1} htmlFor='apellido'> Apellido: </label>
                 <input  type='text'
                         value={input.apellido || ""} 
                         name='apellido' 
@@ -44,7 +44,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
             
             <div className={style.div1}>
-                <label className={style.label1}> DNI: </label>
+                <label className={style.label1} htmlFor='dni'> DNI: </label>
                 <input  type='number' 
                         value={input.dni || ""} 
                         name='dni' 
@@ -64,7 +64,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Fecha de nacimiento: </label>
+                <label className={style.label1} htmlFor='fechaNacimiento'> Fecha de nacimiento: </label>
                 <input  type='date' 
                         value={input.fechaNacimiento || ""} 
                         name='fechaNacimiento' 
@@ -84,7 +84,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Email: </label>
+                <label className={style.label1} htmlFor='email'> Email: </label>
                 <input  type='text' 
                         value={input.email || ""} 
                         name='email' 
@@ -102,7 +102,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Telefono: </label>
+                <label className={style.label1} htmlFor='telefono'> Telefono: </label>
                 <input  type='text' 
                         value={input.telefono || ""} 
                         name='telefono' 
@@ -120,7 +120,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Domicilio: </label>
+                <label className={style.label1} htmlFor='domicilio'> Domicilio: </label>
                 <input  type='text' 
                         value={input.domicilio || ""} 
                         name='domicilio' 
@@ -138,7 +138,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Ciudad: </label>
+                <label className={style.label1} htmlFor='ciudad'> Ciudad: </label>
                 <input  type='text' 
                         value={input.ciudad || ""} 
                         name='ciudad' 
@@ -156,7 +156,7 @@ function EmpleadoModificacion({input, errors, handleChange, handleSubmit, change
             </div>
 
             <div className={style.div1}>
-                <label className={style.label1}> Fecha Alta: </label>
+                <label className={style.label1} htmlFor='fechaAlta'> Fecha Alta: </label>
                 <input  type='date' 
                         value={input.fechaAlta || ""} 
                         name='fechaAlta' 

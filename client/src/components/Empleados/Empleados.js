@@ -21,7 +21,7 @@ function Empleados() {
 
   useEffect(() => {
     dispatch(getAllEmployees());
-    return ()=> dispatch(cleanEmployees());
+    // return ()=> dispatch(cleanEmployees());
   }, [dispatch]);
     
 
@@ -36,7 +36,7 @@ function Empleados() {
   return (
     <div className={style.all}>
       <div className={style.top}>
-        <h1 className={style.title}> Empleados </h1>
+        <h1 className={style.title} data-testid="empleados"> Empleados </h1>
       </div>
       <div className={style.down}>
 

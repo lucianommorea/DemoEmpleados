@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import style from './TablaEmpleados.module.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function TablaEmpleados({width, status}) {
 
-    let employees = useSelector(state => state.employees);
+    const employees = useSelector(state=> state.employees);
 
     function formatNumber(number){
         return new Intl.NumberFormat().format(number)
