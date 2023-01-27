@@ -1,4 +1,4 @@
-import { findByRole, render, screen } from '../../test-utils';
+import { render, screen } from '../../test-utils';
 import userEvent from '@testing-library/user-event';
 import App from '../../App';
 
@@ -12,12 +12,12 @@ describe('Tabla Empleados', () => {
     it('renders first employee in landing', async () => {
        
       const employeeIn = await screen.findByText(/gomez/i);
-      // const employeeOut = await screen.findByText(/messi/i);
+      // const employeeOut = screen.queryByText(/messi/i);
       const nombre = screen.getByText(/nombre/i);
       const ingreso = screen.getByText(/2022-11-01 10:58/i);
 
       expect(employeeIn).toBeInTheDocument();
-      // expect(employeeOut).toBeInTheDocument();
+      // expect(employeeOut).not.toBeInTheDocument();
       expect(nombre).toBeInTheDocument();
       expect(ingreso).toBeInTheDocument();
 
@@ -32,10 +32,12 @@ describe('Tabla Empleados', () => {
       expect(inputRadio2).toBeChecked();
        
       const employee = await screen.findByText(/messi/i);
+      // const employee2 = screen.queryByText(/gomez/i);
       const nombre = screen.getByText(/nombre/i);
       const egreso = screen.getByText(/2022-11-04 17:00/i);
 
       expect(employee).toBeInTheDocument();
+      // expect(employee2).toBeInTheDocument();
       expect(nombre).toBeInTheDocument();
       expect(egreso).toBeInTheDocument();
 

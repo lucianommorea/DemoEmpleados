@@ -14,6 +14,7 @@ export const handlers = [
     rest.get(`/empleados/activos`, (req, res, ctx) => {
         const search = req.url.searchParams.get('search');
         const id = req.url.searchParams.get('id');
+        // const status = req.url.searchParams.get('id');
         if(id){
             return res(
                 ctx.status(200),
@@ -26,6 +27,18 @@ export const handlers = [
                 ctx.json(empleado2)
             )
         }
+        // if(status === 'IN'){
+        //     return res(
+        //         ctx.status(200),
+        //         ctx.json(activesIn)
+        //     )
+        // }
+        // if(status === 'OUT'){
+        //     return res(
+        //         ctx.status(200),
+        //         ctx.json(activesOut)
+        //     )
+        // }
         else{
             return res(
                 ctx.status(200),
