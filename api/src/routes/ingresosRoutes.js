@@ -11,13 +11,13 @@ router.post('/', async function (req, res){
     try {
         let empleadoS = await Empleado.findByPk(idEmpleado);
         if (!idEmpleado || !date) {
-            res.status(404).send({error: "No se recibieron los parámetros necesarios para registrar Ingreso"});
+            res.status(400).send({error: "No se recibieron los parámetros necesarios para registrar Ingreso"});
         }
         else if(!empleadoS) {
-            res.status(404).send({error: "No existe el Empleado al que se le quiere registrar el Ingreso"});
+            res.status(400).send({error: "No existe el Empleado al que se le quiere registrar el Ingreso"});
         }
         else if(empleadoS.estado === 'IN'){
-            res.status(404).send({error: "El empleado ya está en la empresa. No se puede registrar un nuevo Ingreso"});
+            res.status(400).send({error: "El empleado ya está en la empresa. No se puede registrar un nuevo Ingreso"});
         }
         else {
             // let newIngreso = await postIngreso(idEmpleado, date);
@@ -36,14 +36,14 @@ router.put('/:id', async (req,res) => {
     const {date} = req.body;
     try {
         if(!id || !date){
-            res.status(404).send({error: "No se recibieron los parámetros necesarios para modificar Ingreso"});
+            return res.status(400).send({error: "No se recibieron los parámetros necesarios para modificar Ingreso"});
         }
         let ingresoS = await Ingreso.findByPk(id);
         if(!ingresoS){
-            res.status(404).send({error: "No existe ese ingreso"});
+            res.status(400).send({error: "No existe ese ingreso"});
         }
         else if(ingresoS.isIn === 'OUT'){
-            res.status(404).send({error: "No se puede modificar un Ingreso que ya fue egresado"});
+            res.status(400).send({error: "No se puede modificar un Ingreso que ya fue egresado"});
         }
         else{
             let modifyIngreso = await putIngreso(id, date)
@@ -64,16 +64,16 @@ router.get('/', async (req,res) => {
                 res.status(200).send(idIngreso);
             }
             else{
-                res.status(404).send('Ingreso no encontrado');
+                res.status(400).send({error: 'Ingreso no encontrado'});
             }
         }
         else if(idEmpleado){
             const employeeIngresos = await getAllIngresosByEmployee(idEmpleado);
-            if(employeeIngresos){
+            if(employeeIngresos.length > 0){
                 res.status(200).send(employeeIngresos);
             }
             else{
-                res.status(404).send('Ingresos no encontrados');
+                res.status(400).send({error: 'Ingresos no encontrados'});
             }
         }
         else {
@@ -90,9 +90,9 @@ router.delete('/:id', async (req,res) => {
     try {
         const ingresoDeleted = await Ingreso.findByPk(id);
         if(!id){
-            res.status(404).send({error: "No se recibieron los parámetros necesarios para eliminar Ingreso"});
+            res.status(400).send({error: "No se recibieron los parámetros necesarios para eliminar Ingreso"});
         }
-        else if(!ingresoDeleted) res.status(404).send({error: "No se recibieron los parámetros necesarios para eliminar Ingreso"});
+        else if(!ingresoDeleted) res.status(400).send({error: "No existe el Ingreso que se quiere eliminar"});
         else{
             await deleteIngreso(id);
             res.status(200).send({ success: true })

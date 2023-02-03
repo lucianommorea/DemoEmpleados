@@ -13,7 +13,7 @@ describe('Ingresos', () => {
         userEvent.click(ingresosElement);
     })
     
-    it('renders Title Registro Ingresos', async () => {
+    it('render Title Registro Ingresos', async () => {
 
         const links = screen.getAllByRole('link');
         const title = screen.getByRole('heading', {name:/registrar ingresos/i});
@@ -21,7 +21,7 @@ describe('Ingresos', () => {
         expect(title).toBeInTheDocument();
     });
 
-    it('renders SearchBar', async () => {
+    it('render SearchBar', async () => {
 
         const input = screen.getByPlaceholderText(/buscar por apellido o legajo/i)
         const reset = screen.getByRole('button', {name: /reset/i});
@@ -30,7 +30,7 @@ describe('Ingresos', () => {
         expect(input.value).toBeFalsy();
     });
 
-    it('renders TablaIngresos', async () => {
+    it('render TablaIngresos', async () => {
 
         const apellido = screen.getByText(/apellido/i);
         const nombre = screen.getByText(/martin/i);

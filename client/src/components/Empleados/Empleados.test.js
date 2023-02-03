@@ -5,15 +5,6 @@ import App from '../../App';
 
 describe('Empleados', () => {
 
-    // beforeEach( ()=>{
-
-    // })
-
-    // afterEach(()=>{
-    //   cleanup();
-    // })
-
-    
     it('renders title and components', async () => {
        
       render(<Empleados />);
@@ -32,7 +23,7 @@ describe('Empleados', () => {
 
     });
 
-    it('click button, go to Create Employee', async () => {
+    it('click button Alta Empleado', async () => {
 
         render(<App />);
         const empleadosElement = screen.getAllByText(/empleados/i)[0];
@@ -43,8 +34,7 @@ describe('Empleados', () => {
         expect(buttonAlta).toHaveClass('btnAdd');
         userEvent.click(buttonAlta);
 
-        const form = screen.getByText(/ciudad/i);
-
+        const form = await screen.findByText(/ciudad/i);
         expect(form).toBeInTheDocument();
     });
 
@@ -108,6 +98,8 @@ describe('Empleados', () => {
       expect(employee).toBeInTheDocument();
       expect(nombre).toBeInTheDocument();
       expect(employee2).not.toBeInTheDocument();
+
+      screen.debug()
 
       const resetBtn = screen.getByRole('button', {name: /reset/i});
       userEvent.click(resetBtn);

@@ -50,6 +50,7 @@ async function putEgreso(id, date, idIngreso) {
         var fecha1 = moment(ingresoRef.date, "YYYY-MM-DD HH:mm:ss");
         var fecha2 = moment(date, "YYYY-MM-DD HH:mm:ss");
         var diff = fecha2.diff(fecha1, 'h'); // Diff in hours
+        let localDate = moment(date).subtract(3, 'h');
 
         const updatedEgreso = await Egreso.findOne({
           where: {
@@ -59,7 +60,7 @@ async function putEgreso(id, date, idIngreso) {
 
         await ingresoRef.update({horasTrabajadas: diff});
 
-        await updatedEgreso.update({date, horasTrabajadas: diff});
+        await updatedEgreso.update({date: localDate, horasTrabajadas: diff});
         
         return updatedEgreso;
     } catch (error) {

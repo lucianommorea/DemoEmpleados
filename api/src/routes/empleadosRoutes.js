@@ -11,7 +11,7 @@ router.post('/', async function (req, res){
 
     try {
         if (!nombre || !apellido || !dni || !email || !fechaNacimiento || !telefono || !domicilio || !ciudad || !fechaAlta) {
-            res.status(404).send({error: "No se recibieron los parámetros para crear el empleado"});
+            res.status(400).send({error: "No se recibieron los parámetros para crear el empleado"});
             return
         }
         let existeDni = await Empleado.findOne({
@@ -20,7 +20,7 @@ router.post('/', async function (req, res){
             }
         });
         if (!dni || existeDni) {
-            res.status(404).send({error: "Ya existe una persona con ese DNI en la base de datos"});
+            res.status(400).send({error: "Ya existe una persona con ese DNI en la base de datos"});
         }
         else {
             let newEmployee = await postEmployee(nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta);
@@ -47,8 +47,13 @@ router.put('/:id', async (req,res) => {
     const {id} = req.params;
     const {nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta, fechaBaja} = req.body;
     try {
-        let modifyEmployee = await putEmployee(id, nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta, fechaBaja);
-        res.status(200).send(modifyEmployee);
+        let existeId = await Empleado.findByPk(id);
+        if (!existeId) {
+            res.status(400).send({error: "No existe ID en base de datos"});
+        } else {
+            let modifyEmployee = await putEmployee(id, nombre, apellido, dni, email, fechaNacimiento, telefono, domicilio, ciudad, fechaAlta, fechaBaja);
+            res.status(200).send(modifyEmployee);     
+        }
     } catch (error) {
         console.log('Error putEmployeeRoute' + error);
     }

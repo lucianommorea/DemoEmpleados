@@ -2,12 +2,22 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, NODE_ENV} = process.env;
 
-let sequelize = new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/exactian`,
-        { logging: false, native: false }
-      );
+// let sequelize = new Sequelize(
+//         `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/demoempleados`,
+//         { logging: false, native: false }
+//       );
+
+let sequelize = NODE_ENV === 'test' ? 
+new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/demoempleadostest`,
+  { logging: false, native: false }
+) :
+new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/demoempleados`,
+  { logging: false, native: false }
+)
 
 const basename = path.basename(__filename);
 

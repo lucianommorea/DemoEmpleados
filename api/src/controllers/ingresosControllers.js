@@ -32,7 +32,9 @@ async function putIngreso(id, date) {
           }
         });
 
-        await updatedIngreso.update({date});
+        let localDate = moment(date).subtract(3, 'h');
+
+        await updatedIngreso.update({date: localDate});
       
         return updatedIngreso;
     } catch (error) {
